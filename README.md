@@ -44,17 +44,6 @@ fviz_final_version/
 └── README.md                      # This file
 ```
 
-## Installation
-
-### Prerequisites
-- Python 3.7+
-- CUDA-compatible GPU (optional, for GPU acceleration)
-
-### Dependencies
-```bash
-pip install streamlit pandas numpy plotly scikit-learn trimap scipy
-```
-
 ## Usage
 
 ### Interactive Visualization
@@ -70,7 +59,6 @@ The interactive application provides:
 - Real-time filtering and visualization of predictions
 - Knee point detection and analysis
 - PDF analysis for sensitive attributes
-- Embedding visualizations (t-SNE, TriMap)
 - Comprehensive metrics dashboard
 
 ### Batch Processing
@@ -90,8 +78,6 @@ python batch_visualization_analysis.py --visualizations scatter tsne trimap
 # Specify input/output directories
 python batch_visualization_analysis.py --input-dir data/CCMNIST1 --output-dir results
 
-# Use GPU acceleration
-python batch_visualization_analysis.py --use-gpu
 ```
 
 ### Advanced Options
@@ -109,12 +95,11 @@ python batch_visualization_analysis.py --force
 # Complete example
 python batch_visualization_analysis.py \
     --visualizations scatter segmented_curve \
-    --input-dir data/CCMNIST1 \
+    --input-dir data/BDD \
     --output-dir comprehensive_analysis \
     --formats png pdf \
     --algorithms SagNet \
     --steps 8000 \
-    --use-gpu
 ```
 
 ### Summary Report Generation
@@ -128,7 +113,7 @@ python generate_summary.py
 This creates summary tables with:
 - Basic statistics (mean, median, std deviation)
 - Knee point analysis
-- Fairness metrics (ACC, MD, DP, EO, AUC)
+- Fairness metrics (ACC, MD, DP)
 - Correlation analysis
 
 ## Data Format
@@ -188,18 +173,7 @@ The framework supports multiple output formats:
 - **PDF**: Vector graphics for publications
 - **HTML**: Interactive web-based visualizations
 
-## Contributing
-
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Add tests if applicable
-5. Submit a pull request
 
 ## License
 
 This project is licensed under the MIT License - see the LICENSE file for details.
-
----
-
-**Note**: This framework is designed for research purposes and should be used in accordance with ethical AI practices and relevant regulations.
