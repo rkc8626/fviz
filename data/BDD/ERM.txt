@@ -1,0 +1,444 @@
+Environment:
+	Python: 3.8.15
+	PyTorch: 2.4.1
+	Torchvision: 0.20.0
+	CUDA: 12.1
+	CUDNN: 90100
+	NumPy: 1.23.5
+	PIL: 9.4.0
+Args:
+	algorithm: ERM
+	checkpoint_freq: None
+	data_dir: /home/chenz1/toorange/Data
+	dataset: BDDPerson
+	holdout_fraction: 0.2
+	hparams: {"lr": 0.0001, "batch_size": 32, "weight_decay": 0.0}
+	hparams_seed: 0
+	output_dir: grid_search_results/ERM_lr_0.0001_bs_32_wd_0.0
+	save_model_every_checkpoint: False
+	save_predictions_every_checkpoint: True
+	seed: 0
+	skip_model_save: False
+	step: 2
+	steps: None
+	task: domain_generalization
+	test_envs: [0]
+	trial_seed: 0
+	uda_holdout_fraction: 0
+HParams:
+	batch_size: 32
+	class_balanced: False
+	data_augmentation: True
+	lr: 0.0001
+	nonlinear_classifier: False
+	resnet18: False
+	resnet_dropout: 0.0
+	weight_decay: 0.0
+[SensitiveImageFolder] Second element counts: 0s=3091, 1s=2830
+[SensitiveImageFolder] Second element counts: 0s=3091, 1s=2830
+
+Debugging dataset splitting:
+Dataset type: <class 'domainbed.datasets.BDDPerson'>
+Number of environments: 2
+Test environments: [0]
+Holdout fraction: 0.2
+
+Processing environment 0:
+Environment size: 2340
+Split sizes - in: 1872, out: 468
+Test env split - in: 1872, uda: 0
+
+Processing environment 1:
+Environment size: 3581
+Split sizes - in: 2865, out: 716
+
+Final split sizes:
+In splits: [1872, 2865]
+Out splits: [468, 716]
+UDA splits: []
+sensitive attribute stats:
+  Unique values: [0 1]
+  Counts: [1303 2278]
+  Mean: 0.6361
+sensitive attribute stats:
+  Unique values: [0 1]
+  Counts: [1788  552]
+  Mean: 0.2359
+sensitive attribute stats:
+  Unique values: [0 1]
+  Counts: [1429  443]
+  Mean: 0.2366
+sensitive attribute stats:
+  Unique values: [0 1]
+  Counts: [1049 1816]
+  Mean: 0.6339
+sensitive attribute stats:
+  Unique values: [0 1]
+  Counts: [359 109]
+  Mean: 0.2329
+sensitive attribute stats:
+  Unique values: [0 1]
+  Counts: [254 462]
+  Mean: 0.6453
+Hparams:  {'data_augmentation': True, 'resnet18': False, 'resnet_dropout': 0.0, 'class_balanced': False, 'nonlinear_classifier': False, 'lr': 0.0001, 'weight_decay': 0.0, 'batch_size': 32}
+/blue/ufdatastudios/chenz1/.conda/envs/fddg2/lib/python3.8/site-packages/torchvision/models/_utils.py:208: UserWarning: The parameter 'pretrained' is deprecated since 0.13 and may be removed in the future, please use 'weights' instead.
+  warnings.warn(
+/blue/ufdatastudios/chenz1/.conda/envs/fddg2/lib/python3.8/site-packages/torchvision/models/_utils.py:223: UserWarning: Arguments other than a weight enum or `None` for 'weights' are deprecated since 0.13 and may be removed in the future. The current behavior is equivalent to passing `weights=ResNet50_Weights.IMAGENET1K_V1`. You can also use `weights=ResNet50_Weights.DEFAULT` to get the most up-to-date weights.
+  warnings.warn(msg)
+[md] y_1_s_0: 896.1444702148438, y_1_s_1: 290.7518310546875, s_0: 1429.0, s_1: 443.0
+[md] result: 0.029211699962615967
+[dp] s_0: 1429, y_1_s_0: 1284.0, s_1: 443, y_1_s_1: 401.0
+[dp] result: 0.9926408611082511
+[eo] y_1_s_0: 400.0, yhat_1_y_1_s_0: 400.0, y_1_s_1: 174.0, yhat_1_y_1_s_1: 174.0
+[eo] result: 1.0
+env0_in_acc   env0_out_acc  env1_in_acc   env1_out_acc  epoch         l_cls         loss          step          step_time    
+0.4065170940  0.4059829060  0.6314136126  0.6396648045  0.0000000000  0.7724317312  0.7724317312  0             0.7598259449 
+env0_in_md    env0_out_md   env1_in_md    env1_out_md   epoch         l_cls         loss          step          step_time    
+0.0292117000  0.0349595547  0.0073322654  0.0047647357  0.0000000000  0.7724317312  0.7724317312  0             0.7598259449 
+env0_in_dp    env0_out_dp   env1_in_dp    env1_out_dp   epoch         l_cls         loss          step          step_time    
+0.9926408611  0.9660673588  0.9942619196  0.9768247257  0.0000000000  0.7724317312  0.7724317312  0             0.7598259449 
+env0_in_eo    env0_out_eo   env1_in_eo    env1_out_eo   epoch         l_cls         loss          step          step_time    
+1.0000000000  1.0000000000  1.0000000000  1.0000000000  0.0000000000  0.7724317312  0.7724317312  0             0.7598259449 
+env0_in_auc   env0_out_auc  env1_in_auc   env1_out_auc  epoch         l_cls         loss          step          step_time    
+0.5734945431  0.5886381641  0.5136001142  0.5100811262  0.0000000000  0.7724317312  0.7724317312  0             0.7598259449 
+
+Processing 5921 total samples across 2 environments
+Predictions saved to grid_search_results/ERM_lr_0.0001_bs_32_wd_0.0/step_0_predictions.json
+Total predictions: 5921
+Prediction summary saved to grid_search_results/ERM_lr_0.0001_bs_32_wd_0.0/step_0_predictions_summary.json
+[md] y_1_s_0: 572.332763671875, y_1_s_1: 226.9078369140625, s_0: 1429.0, s_1: 443.0
+[md] result: 0.11169454455375671
+[dp] s_0: 1429, y_1_s_0: 574.0, s_1: 443, y_1_s_1: 232.0
+[dp] result: 0.7670000723920756
+[eo] y_1_s_0: 400.0, yhat_1_y_1_s_0: 400.0, y_1_s_1: 174.0, yhat_1_y_1_s_1: 174.0
+[eo] result: 1.0
+env0_in_acc   env0_out_acc  env1_in_acc   env1_out_acc  epoch         l_cls         loss          step          step_time    
+0.8760683761  0.9081196581  0.9891797557  0.9888268156  8.5470085470  0.0658467786  0.0658467786  500           0.1373185887 
+env0_in_md    env0_out_md   env1_in_md    env1_out_md   epoch         l_cls         loss          step          step_time    
+0.1116945446  0.1023018062  0.0334362686  0.0262231529  8.5470085470  0.0658467786  0.0658467786  500           0.1373185887 
+env0_in_dp    env0_out_dp   env1_in_dp    env1_out_dp   epoch         l_cls         loss          step          step_time    
+0.7670000724  0.7833426184  0.9322255924  0.9493369250  8.5470085470  0.0658467786  0.0658467786  500           0.1373185887 
+env0_in_eo    env0_out_eo   env1_in_eo    env1_out_eo   epoch         l_cls         loss          step          step_time    
+1.0000000000  1.0000000000  1.0000000000  1.0000000000  8.5470085470  0.0658467786  0.0658467786  500           0.1373185887 
+env0_in_auc   env0_out_auc  env1_in_auc   env1_out_auc  epoch         l_cls         loss          step          step_time    
+0.5635126618  0.5597096931  0.5270836920  0.5178017521  8.5470085470  0.0658467786  0.0658467786  500           0.1373185887 
+
+Processing 5921 total samples across 2 environments
+Predictions saved to grid_search_results/ERM_lr_0.0001_bs_32_wd_0.0/step_500_predictions.json
+Total predictions: 5921
+Prediction summary saved to grid_search_results/ERM_lr_0.0001_bs_32_wd_0.0/step_500_predictions_summary.json
+[md] y_1_s_0: 395.6244812011719, y_1_s_1: 162.82806396484375, s_0: 1429.0, s_1: 443.0
+[md] result: 0.09070363640785217
+[dp] s_0: 1429, y_1_s_0: 397.0, s_1: 443, y_1_s_1: 162.0
+[dp] result: 0.7597085072009261
+[eo] y_1_s_0: 400.0, yhat_1_y_1_s_0: 376.0, y_1_s_1: 174.0, yhat_1_y_1_s_1: 160.0
+[eo] result: 1.0222499999999999
+env0_in_acc   env0_out_acc  env1_in_acc   env1_out_acc  epoch         l_cls         loss          step          step_time    
+0.9674145299  0.9743589744  0.9933682373  0.9832402235  17.094017094  0.0216122865  0.0216122865  1000          0.1370752802 
+env0_in_md    env0_out_md   env1_in_md    env1_out_md   epoch         l_cls         loss          step          step_time    
+0.0907036364  0.0848045647  0.0414864421  0.0306921899  17.094017094  0.0216122865  0.0216122865  1000          0.1370752802 
+env0_in_dp    env0_out_dp   env1_in_dp    env1_out_dp   epoch         l_cls         loss          step          step_time    
+0.7597085072  0.7510628940  0.9177508337  0.9347112861  17.094017094  0.0216122865  0.0216122865  1000          0.1370752802 
+env0_in_eo    env0_out_eo   env1_in_eo    env1_out_eo   epoch         l_cls         loss          step          step_time    
+0.9782342871  0.9522517634  0.9870281237  0.9990347490  17.094017094  0.0216122865  0.0216122865  1000          0.1370752802 
+env0_in_auc   env0_out_auc  env1_in_auc   env1_out_auc  epoch         l_cls         loss          step          step_time    
+0.5433182686  0.5272290511  0.5239676554  0.5048488257  17.094017094  0.0216122865  0.0216122865  1000          0.1370752802 
+
+Processing 5921 total samples across 2 environments
+Predictions saved to grid_search_results/ERM_lr_0.0001_bs_32_wd_0.0/step_1000_predictions.json
+Total predictions: 5921
+Prediction summary saved to grid_search_results/ERM_lr_0.0001_bs_32_wd_0.0/step_1000_predictions_summary.json
+[md] y_1_s_0: 496.9801330566406, y_1_s_1: 196.960693359375, s_0: 1429.0, s_1: 443.0
+[md] result: 0.09682479500770569
+[dp] s_0: 1429, y_1_s_0: 491.0, s_1: 443, y_1_s_1: 197.0
+[dp] result: 0.7726570353766967
+[eo] y_1_s_0: 400.0, yhat_1_y_1_s_0: 399.0, y_1_s_1: 174.0, yhat_1_y_1_s_1: 174.0
+[eo] result: 0.9975
+env0_in_acc   env0_out_acc  env1_in_acc   env1_out_acc  epoch         l_cls         loss          step          step_time    
+0.9380341880  0.9594017094  0.9954624782  0.9944134078  25.641025641  0.0216497005  0.0216497005  1500          0.1369712572 
+env0_in_md    env0_out_md   env1_in_md    env1_out_md   epoch         l_cls         loss          step          step_time    
+0.0968247950  0.0810483694  0.0346198082  0.0303803980  25.641025641  0.0216497005  0.0216497005  1500          0.1369712572 
+env0_in_dp    env0_out_dp   env1_in_dp    env1_out_dp   epoch         l_cls         loss          step          step_time    
+0.7726570354  0.7908272333  0.9325420209  0.9416416974  25.641025641  0.0216497005  0.0216497005  1500          0.1369712572 
+env0_in_eo    env0_out_eo   env1_in_eo    env1_out_eo   epoch         l_cls         loss          step          step_time    
+0.9975000000  1.0000000000  1.0000000000  1.0000000000  25.641025641  0.0216497005  0.0216497005  1500          0.1369712572 
+env0_in_auc   env0_out_auc  env1_in_auc   env1_out_auc  epoch         l_cls         loss          step          step_time    
+0.5625174750  0.5373744601  0.5169581477  0.5174012339  25.641025641  0.0216497005  0.0216497005  1500          0.1369712572 
+
+Processing 5921 total samples across 2 environments
+Predictions saved to grid_search_results/ERM_lr_0.0001_bs_32_wd_0.0/step_1500_predictions.json
+Total predictions: 5921
+Prediction summary saved to grid_search_results/ERM_lr_0.0001_bs_32_wd_0.0/step_1500_predictions_summary.json
+[md] y_1_s_0: 433.9977722167969, y_1_s_1: 176.68075561523438, s_0: 1429.0, s_1: 443.0
+[md] result: 0.09512054920196533
+[dp] s_0: 1429, y_1_s_0: 434.0, s_1: 443, y_1_s_1: 177.0
+[dp] result: 0.7601301530444822
+[eo] y_1_s_0: 400.0, yhat_1_y_1_s_0: 398.0, y_1_s_1: 174.0, yhat_1_y_1_s_1: 173.0
+[eo] result: 1.0007514450867052
+env0_in_acc   env0_out_acc  env1_in_acc   env1_out_acc  epoch         l_cls         loss          step          step_time    
+0.9770299145  0.9850427350  0.9996509599  0.9972067039  34.188034188  0.0075702181  0.0075702181  2000          0.1369235153 
+env0_in_md    env0_out_md   env1_in_md    env1_out_md   epoch         l_cls         loss          step          step_time    
+0.0951205492  0.0762716532  0.0353483558  0.0303492546  34.188034188  0.0075702181  0.0075702181  2000          0.1369235153 
+env0_in_dp    env0_out_dp   env1_in_dp    env1_out_dp   epoch         l_cls         loss          step          step_time    
+0.7601301530  0.7940861367  0.9308859293  0.9338090551  34.188034188  0.0075702181  0.0075702181  2000          0.1369235153 
+env0_in_eo    env0_out_eo   env1_in_eo    env1_out_eo   epoch         l_cls         loss          step          step_time    
+0.9992491192  0.9896907216  1.0000000000  0.9955357143  34.188034188  0.0075702181  0.0075702181  2000          0.1369235153 
+env0_in_auc   env0_out_auc  env1_in_auc   env1_out_auc  epoch         l_cls         loss          step          step_time    
+0.5591527959  0.5452454576  0.5008409519  0.5276442717  34.188034188  0.0075702181  0.0075702181  2000          0.1369235153 
+
+Processing 5921 total samples across 2 environments
+Predictions saved to grid_search_results/ERM_lr_0.0001_bs_32_wd_0.0/step_2000_predictions.json
+Total predictions: 5921
+Prediction summary saved to grid_search_results/ERM_lr_0.0001_bs_32_wd_0.0/step_2000_predictions_summary.json
+[md] y_1_s_0: 466.984375, y_1_s_1: 183.41249084472656, s_0: 1429.0, s_1: 443.0
+[md] result: 0.08723264932632446
+[dp] s_0: 1429, y_1_s_0: 463.0, s_1: 443, y_1_s_1: 186.0
+[dp] result: 0.7716840861719978
+[eo] y_1_s_0: 400.0, yhat_1_y_1_s_0: 398.0, y_1_s_1: 174.0, yhat_1_y_1_s_1: 172.0
+[eo] result: 1.0065697674418606
+env0_in_acc   env0_out_acc  env1_in_acc   env1_out_acc  epoch         l_cls         loss          step          step_time    
+0.9556623932  0.9636752137  0.9996509599  0.9972067039  42.735042735  0.0140588762  0.0140588762  2500          0.1371291280 
+env0_in_md    env0_out_md   env1_in_md    env1_out_md   epoch         l_cls         loss          step          step_time    
+0.0872326493  0.0854022801  0.0365631282  0.0320663750  42.735042735  0.0140588762  0.0140588762  2500          0.1371291280 
+env0_in_dp    env0_out_dp   env1_in_dp    env1_out_dp   epoch         l_cls         loss          step          step_time    
+0.7716840862  0.7735110757  0.9287385569  0.9338090551  42.735042735  0.0140588762  0.0140588762  2500          0.1371291280 
+env0_in_eo    env0_out_eo   env1_in_eo    env1_out_eo   epoch         l_cls         loss          step          step_time    
+0.9934731127  0.9793814433  0.9988452656  0.9955357143  42.735042735  0.0140588762  0.0140588762  2500          0.1371291280 
+env0_in_auc   env0_out_auc  env1_in_auc   env1_out_auc  epoch         l_cls         loss          step          step_time    
+0.5558939542  0.5360455905  0.5039727368  0.5292889525  42.735042735  0.0140588762  0.0140588762  2500          0.1371291280 
+
+Processing 5921 total samples across 2 environments
+Predictions saved to grid_search_results/ERM_lr_0.0001_bs_32_wd_0.0/step_2500_predictions.json
+Total predictions: 5921
+Prediction summary saved to grid_search_results/ERM_lr_0.0001_bs_32_wd_0.0/step_2500_predictions_summary.json
+[md] y_1_s_0: 439.6929626464844, y_1_s_1: 174.8067169189453, s_0: 1429.0, s_1: 443.0
+[md] result: 0.08690479397773743
+[dp] s_0: 1429, y_1_s_0: 442.0, s_1: 443, y_1_s_1: 174.0
+[dp] result: 0.7874890406441286
+[eo] y_1_s_0: 400.0, yhat_1_y_1_s_0: 393.0, y_1_s_1: 174.0, yhat_1_y_1_s_1: 166.0
+[eo] result: 1.0298493975903615
+env0_in_acc   env0_out_acc  env1_in_acc   env1_out_acc  epoch         l_cls         loss          step          step_time    
+0.9615384615  0.9700854701  0.9996509599  0.9902234637  51.282051282  0.0208495871  0.0208495871  3000          0.1369589081 
+env0_in_md    env0_out_md   env1_in_md    env1_out_md   epoch         l_cls         loss          step          step_time    
+0.0869047940  0.1013864577  0.0357225537  0.0297576189  51.282051282  0.0208495871  0.0208495871  3000          0.1369589081 
+env0_in_dp    env0_out_dp   env1_in_dp    env1_out_dp   epoch         l_cls         loss          step          step_time    
+0.7874890406  0.7331340444  0.9308859293  0.9259842520  51.282051282  0.0208495871  0.0208495871  3000          0.1369589081 
+env0_in_eo    env0_out_eo   env1_in_eo    env1_out_eo   epoch         l_cls         loss          step          step_time    
+0.9710157644  0.9484536082  1.0000000000  0.9916205534  51.282051282  0.0208495871  0.0208495871  3000          0.1369589081 
+env0_in_auc   env0_out_auc  env1_in_auc   env1_out_auc  epoch         l_cls         loss          step          step_time    
+0.5523286581  0.5413355140  0.5271498343  0.5149214303  51.282051282  0.0208495871  0.0208495871  3000          0.1369589081 
+
+Processing 5921 total samples across 2 environments
+Predictions saved to grid_search_results/ERM_lr_0.0001_bs_32_wd_0.0/step_3000_predictions.json
+Total predictions: 5921
+Prediction summary saved to grid_search_results/ERM_lr_0.0001_bs_32_wd_0.0/step_3000_predictions_summary.json
+[md] y_1_s_0: 439.6448974609375, y_1_s_1: 179.0603790283203, s_0: 1429.0, s_1: 443.0
+[md] result: 0.09654039144515991
+[dp] s_0: 1429, y_1_s_0: 440.0, s_1: 443, y_1_s_1: 180.0
+[dp] result: 0.7577948837570951
+[eo] y_1_s_0: 400.0, yhat_1_y_1_s_0: 398.0, y_1_s_1: 174.0, yhat_1_y_1_s_1: 173.0
+[eo] result: 1.0007514450867052
+env0_in_acc   env0_out_acc  env1_in_acc   env1_out_acc  epoch         l_cls         loss          step          step_time    
+0.9722222222  0.9743589744  1.0000000000  1.0000000000  59.829059829  0.0003924052  0.0003924052  3500          0.1370114541 
+env0_in_md    env0_out_md   env1_in_md    env1_out_md   epoch         l_cls         loss          step          step_time    
+0.0965403914  0.0788186789  0.0359981954  0.0320983827  59.829059829  0.0003924052  0.0003924052  3500          0.1370114541 
+env0_in_dp    env0_out_dp   env1_in_dp    env1_out_dp   epoch         l_cls         loss          step          step_time    
+0.7577948838  0.7923771995  0.9298122431  0.9338090551  59.829059829  0.0003924052  0.0003924052  3500          0.1370114541 
+env0_in_eo    env0_out_eo   env1_in_eo    env1_out_eo   epoch         l_cls         loss          step          step_time    
+0.9992491192  1.0000000000  1.0000000000  1.0000000000  59.829059829  0.0003924052  0.0003924052  3500          0.1370114541 
+env0_in_auc   env0_out_auc  env1_in_auc   env1_out_auc  epoch         l_cls         loss          step          step_time    
+0.5808115353  0.5532953413  0.5709570264  0.5831117701  59.829059829  0.0003924052  0.0003924052  3500          0.1370114541 
+
+Processing 5921 total samples across 2 environments
+Predictions saved to grid_search_results/ERM_lr_0.0001_bs_32_wd_0.0/step_3500_predictions.json
+Total predictions: 5921
+Prediction summary saved to grid_search_results/ERM_lr_0.0001_bs_32_wd_0.0/step_3500_predictions_summary.json
+[md] y_1_s_0: 436.1601257324219, y_1_s_1: 177.4260711669922, s_0: 1429.0, s_1: 443.0
+[md] result: 0.09528979659080505
+[dp] s_0: 1429, y_1_s_0: 437.0, s_1: 443, y_1_s_1: 176.0
+[dp] result: 0.7697332845600865
+[eo] y_1_s_0: 400.0, yhat_1_y_1_s_0: 398.0, y_1_s_1: 174.0, yhat_1_y_1_s_1: 170.0
+[eo] result: 1.0184117647058823
+env0_in_acc   env0_out_acc  env1_in_acc   env1_out_acc  epoch         l_cls         loss          step          step_time    
+0.9727564103  0.9764957265  1.0000000000  1.0000000000  68.376068376  0.0000062397  0.0000062397  4000          0.1372051954 
+env0_in_md    env0_out_md   env1_in_md    env1_out_md   epoch         l_cls         loss          step          step_time    
+0.0952897966  0.0799638629  0.0359978974  0.0321448743  68.376068376  0.0000062397  0.0000062397  4000          0.1372051954 
+env0_in_dp    env0_out_dp   env1_in_dp    env1_out_dp   epoch         l_cls         loss          step          step_time    
+0.7697332846  0.7849718051  0.9298122431  0.9338090551  68.376068376  0.0000062397  0.0000062397  4000          0.1372051954 
+env0_in_eo    env0_out_eo   env1_in_eo    env1_out_eo   epoch         l_cls         loss          step          step_time    
+0.9819210998  1.0000000000  1.0000000000  1.0000000000  68.376068376  0.0000062397  0.0000062397  4000          0.1372051954 
+env0_in_auc   env0_out_auc  env1_in_auc   env1_out_auc  epoch         l_cls         loss          step          step_time    
+0.5823769799  0.5532697861  0.5714546684  0.5831032485  68.376068376  0.0000062397  0.0000062397  4000          0.1372051954 
+
+Processing 5921 total samples across 2 environments
+Predictions saved to grid_search_results/ERM_lr_0.0001_bs_32_wd_0.0/step_4000_predictions.json
+Total predictions: 5921
+Prediction summary saved to grid_search_results/ERM_lr_0.0001_bs_32_wd_0.0/step_4000_predictions_summary.json
+[md] y_1_s_0: 435.04473876953125, y_1_s_1: 176.7857208251953, s_0: 1429.0, s_1: 443.0
+[md] result: 0.0946248471736908
+[dp] s_0: 1429, y_1_s_0: 435.0, s_1: 443, y_1_s_1: 176.0
+[dp] result: 0.7662104777657612
+[eo] y_1_s_0: 400.0, yhat_1_y_1_s_0: 398.0, y_1_s_1: 174.0, yhat_1_y_1_s_1: 170.0
+[eo] result: 1.0184117647058823
+env0_in_acc   env0_out_acc  env1_in_acc   env1_out_acc  epoch         l_cls         loss          step          step_time    
+0.9738247863  0.9743589744  1.0000000000  1.0000000000  76.923076923  0.0000020574  0.0000020574  4500          0.1371429796 
+env0_in_md    env0_out_md   env1_in_md    env1_out_md   epoch         l_cls         loss          step          step_time    
+0.0946248472  0.0810893476  0.0359974802  0.0320771933  76.923076923  0.0000020574  0.0000020574  4500          0.1371429796 
+env0_in_dp    env0_out_dp   env1_in_dp    env1_out_dp   epoch         l_cls         loss          step          step_time    
+0.7662104778  0.7775664108  0.9298122431  0.9338090551  76.923076923  0.0000020574  0.0000020574  4500          0.1371429796 
+env0_in_eo    env0_out_eo   env1_in_eo    env1_out_eo   epoch         l_cls         loss          step          step_time    
+0.9819210998  0.9896907216  1.0000000000  1.0000000000  76.923076923  0.0000020574  0.0000020574  4500          0.1371429796 
+env0_in_auc   env0_out_auc  env1_in_auc   env1_out_auc  epoch         l_cls         loss          step          step_time    
+0.5848412519  0.5617541080  0.5750683470  0.5870743430  76.923076923  0.0000020574  0.0000020574  4500          0.1371429796 
+
+Processing 5921 total samples across 2 environments
+Predictions saved to grid_search_results/ERM_lr_0.0001_bs_32_wd_0.0/step_4500_predictions.json
+Total predictions: 5921
+Prediction summary saved to grid_search_results/ERM_lr_0.0001_bs_32_wd_0.0/step_4500_predictions_summary.json
+[md] y_1_s_0: 434.5552062988281, y_1_s_1: 176.49258422851562, s_0: 1429.0, s_1: 443.0
+[md] result: 0.09430572390556335
+[dp] s_0: 1429, y_1_s_0: 435.0, s_1: 443, y_1_s_1: 176.0
+[dp] result: 0.7662104777657612
+[eo] y_1_s_0: 400.0, yhat_1_y_1_s_0: 398.0, y_1_s_1: 174.0, yhat_1_y_1_s_1: 170.0
+[eo] result: 1.0184117647058823
+env0_in_acc   env0_out_acc  env1_in_acc   env1_out_acc  epoch         l_cls         loss          step          step_time    
+0.9738247863  0.9764957265  1.0000000000  1.0000000000  85.470085470  0.0000005939  0.0000005939  5000          0.1373289080 
+env0_in_md    env0_out_md   env1_in_md    env1_out_md   epoch         l_cls         loss          step          step_time    
+0.0943057239  0.0819342434  0.0359975100  0.0320214927  85.470085470  0.0000005939  0.0000005939  5000          0.1373289080 
+env0_in_dp    env0_out_dp   env1_in_dp    env1_out_dp   epoch         l_cls         loss          step          step_time    
+0.7662104778  0.7701610164  0.9298122431  0.9338090551  85.470085470  0.0000005939  0.0000005939  5000          0.1373289080 
+env0_in_eo    env0_out_eo   env1_in_eo    env1_out_eo   epoch         l_cls         loss          step          step_time    
+0.9819210998  0.9896907216  1.0000000000  1.0000000000  85.470085470  0.0000005939  0.0000005939  5000          0.1373289080 
+env0_in_auc   env0_out_auc  env1_in_auc   env1_out_auc  epoch         l_cls         loss          step          step_time    
+0.5871696730  0.5674784698  0.5777544588  0.5909176126  85.470085470  0.0000005939  0.0000005939  5000          0.1373289080 
+
+Processing 5921 total samples across 2 environments
+Predictions saved to grid_search_results/ERM_lr_0.0001_bs_32_wd_0.0/step_5000_predictions.json
+Total predictions: 5921
+Prediction summary saved to grid_search_results/ERM_lr_0.0001_bs_32_wd_0.0/step_5000_predictions_summary.json
+[md] y_1_s_0: 434.883544921875, y_1_s_1: 176.62615966796875, s_0: 1429.0, s_1: 443.0
+[md] result: 0.09437745809555054
+[dp] s_0: 1429, y_1_s_0: 435.0, s_1: 443, y_1_s_1: 176.0
+[dp] result: 0.7662104777657612
+[eo] y_1_s_0: 400.0, yhat_1_y_1_s_0: 398.0, y_1_s_1: 174.0, yhat_1_y_1_s_1: 170.0
+[eo] result: 1.0184117647058823
+env0_in_acc   env0_out_acc  env1_in_acc   env1_out_acc  epoch         l_cls         loss          step          step_time    
+0.9738247863  0.9764957265  1.0000000000  1.0000000000  94.017094017  0.0000004060  0.0000004060  5500          0.1372378592 
+env0_in_md    env0_out_md   env1_in_md    env1_out_md   epoch         l_cls         loss          step          step_time    
+0.0943774581  0.0824005902  0.0359973609  0.0320272446  94.017094017  0.0000004060  0.0000004060  5500          0.1372378592 
+env0_in_dp    env0_out_dp   env1_in_dp    env1_out_dp   epoch         l_cls         loss          step          step_time    
+0.7662104778  0.7701610164  0.9298122431  0.9338090551  94.017094017  0.0000004060  0.0000004060  5500          0.1372378592 
+env0_in_eo    env0_out_eo   env1_in_eo    env1_out_eo   epoch         l_cls         loss          step          step_time    
+0.9819210998  0.9896907216  1.0000000000  1.0000000000  94.017094017  0.0000004060  0.0000004060  5500          0.1372378592 
+env0_in_auc   env0_out_auc  env1_in_auc   env1_out_auc  epoch         l_cls         loss          step          step_time    
+0.5882928124  0.5702895403  0.5813324416  0.5929968981  94.017094017  0.0000004060  0.0000004060  5500          0.1372378592 
+
+Processing 5921 total samples across 2 environments
+Predictions saved to grid_search_results/ERM_lr_0.0001_bs_32_wd_0.0/step_5500_predictions.json
+Total predictions: 5921
+Prediction summary saved to grid_search_results/ERM_lr_0.0001_bs_32_wd_0.0/step_5500_predictions_summary.json
+[md] y_1_s_0: 434.88970947265625, y_1_s_1: 176.59378051757812, s_0: 1429.0, s_1: 443.0
+[md] result: 0.09430006146430969
+[dp] s_0: 1429, y_1_s_0: 435.0, s_1: 443, y_1_s_1: 176.0
+[dp] result: 0.7662104777657612
+[eo] y_1_s_0: 400.0, yhat_1_y_1_s_0: 398.0, y_1_s_1: 174.0, yhat_1_y_1_s_1: 170.0
+[eo] result: 1.0184117647058823
+env0_in_acc   env0_out_acc  env1_in_acc   env1_out_acc  epoch         l_cls         loss          step          step_time    
+0.9738247863  0.9786324786  1.0000000000  1.0000000000  102.56410256  0.0000002571  0.0000002571  6000          0.1371714234 
+env0_in_md    env0_out_md   env1_in_md    env1_out_md   epoch         l_cls         loss          step          step_time    
+0.0943000615  0.0829418004  0.0359972417  0.0320017040  102.56410256  0.0000002571  0.0000002571  6000          0.1371714234 
+env0_in_dp    env0_out_dp   env1_in_dp    env1_out_dp   epoch         l_cls         loss          step          step_time    
+0.7662104778  0.7775664108  0.9298122431  0.9338090551  102.56410256  0.0000002571  0.0000002571  6000          0.1371714234 
+env0_in_eo    env0_out_eo   env1_in_eo    env1_out_eo   epoch         l_cls         loss          step          step_time    
+0.9819210998  1.0000000000  1.0000000000  1.0000000000  102.56410256  0.0000002571  0.0000002571  6000          0.1371714234 
+env0_in_auc   env0_out_auc  env1_in_auc   env1_out_auc  epoch         l_cls         loss          step          step_time    
+0.5888867651  0.5708773095  0.5831828509  0.5945819273  102.56410256  0.0000002571  0.0000002571  6000          0.1371714234 
+
+Processing 5921 total samples across 2 environments
+Predictions saved to grid_search_results/ERM_lr_0.0001_bs_32_wd_0.0/step_6000_predictions.json
+Total predictions: 5921
+Prediction summary saved to grid_search_results/ERM_lr_0.0001_bs_32_wd_0.0/step_6000_predictions_summary.json
+[md] y_1_s_0: 434.87408447265625, y_1_s_1: 176.54136657714844, s_0: 1429.0, s_1: 443.0
+[md] result: 0.09419268369674683
+[dp] s_0: 1429, y_1_s_0: 435.0, s_1: 443, y_1_s_1: 176.0
+[dp] result: 0.7662104777657612
+[eo] y_1_s_0: 400.0, yhat_1_y_1_s_0: 398.0, y_1_s_1: 174.0, yhat_1_y_1_s_1: 170.0
+[eo] result: 1.0184117647058823
+env0_in_acc   env0_out_acc  env1_in_acc   env1_out_acc  epoch         l_cls         loss          step          step_time    
+0.9738247863  0.9786324786  1.0000000000  1.0000000000  111.11111111  0.0000001363  0.0000001363  6500          0.1371766300 
+env0_in_md    env0_out_md   env1_in_md    env1_out_md   epoch         l_cls         loss          step          step_time    
+0.0941926837  0.0833493769  0.0359972119  0.0319800377  111.11111111  0.0000001363  0.0000001363  6500          0.1371766300 
+env0_in_dp    env0_out_dp   env1_in_dp    env1_out_dp   epoch         l_cls         loss          step          step_time    
+0.7662104778  0.7775664108  0.9298122431  0.9338090551  111.11111111  0.0000001363  0.0000001363  6500          0.1371766300 
+env0_in_eo    env0_out_eo   env1_in_eo    env1_out_eo   epoch         l_cls         loss          step          step_time    
+0.9819210998  1.0000000000  1.0000000000  1.0000000000  111.11111111  0.0000001363  0.0000001363  6500          0.1371766300 
+env0_in_auc   env0_out_auc  env1_in_auc   env1_out_auc  epoch         l_cls         loss          step          step_time    
+0.5900730909  0.5712606373  0.5852836559  0.5945137540  111.11111111  0.0000001363  0.0000001363  6500          0.1371766300 
+
+Processing 5921 total samples across 2 environments
+Predictions saved to grid_search_results/ERM_lr_0.0001_bs_32_wd_0.0/step_6500_predictions.json
+Total predictions: 5921
+Prediction summary saved to grid_search_results/ERM_lr_0.0001_bs_32_wd_0.0/step_6500_predictions_summary.json
+[md] y_1_s_0: 435.199951171875, y_1_s_1: 176.69200134277344, s_0: 1429.0, s_1: 443.0
+[md] result: 0.09430468082427979
+[dp] s_0: 1429, y_1_s_0: 436.0, s_1: 443, y_1_s_1: 177.0
+[dp] result: 0.7636330569755627
+[eo] y_1_s_0: 400.0, yhat_1_y_1_s_0: 398.0, y_1_s_1: 174.0, yhat_1_y_1_s_1: 170.0
+[eo] result: 1.0184117647058823
+env0_in_acc   env0_out_acc  env1_in_acc   env1_out_acc  epoch         l_cls         loss          step          step_time    
+0.9727564103  0.9786324786  1.0000000000  1.0000000000  119.65811965  0.0000000969  0.0000000969  7000          0.1373626132 
+env0_in_md    env0_out_md   env1_in_md    env1_out_md   epoch         l_cls         loss          step          step_time    
+0.0943046808  0.0834400654  0.0359971523  0.0319938660  119.65811965  0.0000000969  0.0000000969  7000          0.1373626132 
+env0_in_dp    env0_out_dp   env1_in_dp    env1_out_dp   epoch         l_cls         loss          step          step_time    
+0.7636330570  0.7775664108  0.9298122431  0.9338090551  119.65811965  0.0000000969  0.0000000969  7000          0.1373626132 
+env0_in_eo    env0_out_eo   env1_in_eo    env1_out_eo   epoch         l_cls         loss          step          step_time    
+0.9819210998  1.0000000000  1.0000000000  1.0000000000  119.65811965  0.0000000969  0.0000000969  7000          0.1373626132 
+env0_in_auc   env0_out_auc  env1_in_auc   env1_out_auc  epoch         l_cls         loss          step          step_time    
+0.5916511728  0.5712350822  0.5879624186  0.5952295736  119.65811965  0.0000000969  0.0000000969  7000          0.1373626132 
+
+Processing 5921 total samples across 2 environments
+Predictions saved to grid_search_results/ERM_lr_0.0001_bs_32_wd_0.0/step_7000_predictions.json
+Total predictions: 5921
+Prediction summary saved to grid_search_results/ERM_lr_0.0001_bs_32_wd_0.0/step_7000_predictions_summary.json
+[md] y_1_s_0: 435.58880615234375, y_1_s_1: 176.86720275878906, s_0: 1429.0, s_1: 443.0
+[md] result: 0.09442806243896484
+[dp] s_0: 1429, y_1_s_0: 436.0, s_1: 443, y_1_s_1: 177.0
+[dp] result: 0.7636330569755627
+[eo] y_1_s_0: 400.0, yhat_1_y_1_s_0: 398.0, y_1_s_1: 174.0, yhat_1_y_1_s_1: 170.0
+[eo] result: 1.0184117647058823
+env0_in_acc   env0_out_acc  env1_in_acc   env1_out_acc  epoch         l_cls         loss          step          step_time    
+0.9727564103  0.9786324786  1.0000000000  1.0000000000  128.20512820  0.0000000745  0.0000000745  7500          0.1411575885 
+env0_in_md    env0_out_md   env1_in_md    env1_out_md   epoch         l_cls         loss          step          step_time    
+0.0944280624  0.0833656192  0.0359971523  0.0320154130  128.20512820  0.0000000745  0.0000000745  7500          0.1411575885 
+env0_in_dp    env0_out_dp   env1_in_dp    env1_out_dp   epoch         l_cls         loss          step          step_time    
+0.7636330570  0.7775664108  0.9298122431  0.9338090551  128.20512820  0.0000000745  0.0000000745  7500          0.1411575885 
+env0_in_eo    env0_out_eo   env1_in_eo    env1_out_eo   epoch         l_cls         loss          step          step_time    
+0.9819210998  1.0000000000  1.0000000000  1.0000000000  128.20512820  0.0000000745  0.0000000745  7500          0.1411575885 
+env0_in_auc   env0_out_auc  env1_in_auc   env1_out_auc  epoch         l_cls         loss          step          step_time    
+0.5928817292  0.5712861925  0.5908868526  0.5968060811  128.20512820  0.0000000745  0.0000000745  7500          0.1411575885 
+
+Processing 5921 total samples across 2 environments
+Predictions saved to grid_search_results/ERM_lr_0.0001_bs_32_wd_0.0/step_7500_predictions.json
+Total predictions: 5921
+Prediction summary saved to grid_search_results/ERM_lr_0.0001_bs_32_wd_0.0/step_7500_predictions_summary.json
+[md] y_1_s_0: 436.1499938964844, y_1_s_1: 177.18150329589844, s_0: 1429.0, s_1: 443.0
+[md] result: 0.09474483132362366
+[dp] s_0: 1429, y_1_s_0: 436.0, s_1: 443, y_1_s_1: 178.0
+[dp] result: 0.7593429836217673
+[eo] y_1_s_0: 400.0, yhat_1_y_1_s_0: 398.0, y_1_s_1: 174.0, yhat_1_y_1_s_1: 171.0
+[eo] result: 1.0124561403508772
+env0_in_acc   env0_out_acc  env1_in_acc   env1_out_acc  epoch         l_cls         loss          step          step_time    
+0.9732905983  0.9786324786  1.0000000000  1.0000000000  136.75213675  0.0000000752  0.0000000752  8000          0.1373849993 
+env0_in_md    env0_out_md   env1_in_md    env1_out_md   epoch         l_cls         loss          step          step_time    
+0.0947448313  0.0830779672  0.0359972119  0.0320524871  136.75213675  0.0000000752  0.0000000752  8000          0.1373849993 
+env0_in_dp    env0_out_dp   env1_in_dp    env1_out_dp   epoch         l_cls         loss          step          step_time    
+0.7593429836  0.7775664108  0.9298122431  0.9338090551  136.75213675  0.0000000752  0.0000000752  8000          0.1373849993 
+env0_in_eo    env0_out_eo   env1_in_eo    env1_out_eo   epoch         l_cls         loss          step          step_time    
+0.9876971062  1.0000000000  1.0000000000  1.0000000000  136.75213675  0.0000000752  0.0000000752  8000          0.1373849993 
+env0_in_auc   env0_out_auc  env1_in_auc   env1_out_auc  epoch         l_cls         loss          step          step_time    
+0.5938247871  0.5710306407  0.5922663917  0.5969424277  136.75213675  0.0000000752  0.0000000752  8000          0.1373849993 
+
+Processing 5921 total samples across 2 environments
+Predictions saved to grid_search_results/ERM_lr_0.0001_bs_32_wd_0.0/step_8000_predictions.json
+Total predictions: 5921
+Prediction summary saved to grid_search_results/ERM_lr_0.0001_bs_32_wd_0.0/step_8000_predictions_summary.json

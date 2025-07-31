@@ -1,0 +1,443 @@
+Environment:
+	Python: 3.8.15
+	PyTorch: 2.4.1
+	Torchvision: 0.20.0
+	CUDA: 12.1
+	CUDNN: 90100
+	NumPy: 1.23.5
+	PIL: 9.4.0
+Args:
+	algorithm: SagNet
+	checkpoint_freq: None
+	data_dir: /home/chenz1/toorange/Data
+	dataset: BDDPerson
+	holdout_fraction: 0.2
+	hparams: {"lr": 0.0001, "batch_size": 32, "weight_decay": 0.0001, "sag_w_adv": 0.1}
+	hparams_seed: 0
+	output_dir: grid_search_results/SagNet_lr_0.0001_bs_32_wd_0.0001
+	save_model_every_checkpoint: False
+	save_predictions_every_checkpoint: True
+	seed: 0
+	skip_model_save: False
+	step: 2
+	steps: None
+	task: domain_generalization
+	test_envs: [0]
+	trial_seed: 0
+	uda_holdout_fraction: 0
+HParams:
+	batch_size: 32
+	class_balanced: False
+	data_augmentation: True
+	lr: 0.0001
+	nonlinear_classifier: False
+	resnet18: False
+	resnet_dropout: 0.0
+	sag_w_adv: 0.1
+	weight_decay: 0.0001
+[SensitiveImageFolder] Second element counts: 0s=3091, 1s=2830
+[SensitiveImageFolder] Second element counts: 0s=3091, 1s=2830
+
+Debugging dataset splitting:
+Dataset type: <class 'domainbed.datasets.BDDPerson'>
+Number of environments: 2
+Test environments: [0]
+Holdout fraction: 0.2
+
+Processing environment 0:
+Environment size: 2340
+Split sizes - in: 1872, out: 468
+Test env split - in: 1872, uda: 0
+
+Processing environment 1:
+Environment size: 3581
+Split sizes - in: 2865, out: 716
+
+Final split sizes:
+In splits: [1872, 2865]
+Out splits: [468, 716]
+UDA splits: []
+sensitive attribute stats:
+  Unique values: [0 1]
+  Counts: [1303 2278]
+  Mean: 0.6361
+sensitive attribute stats:
+  Unique values: [0 1]
+  Counts: [1788  552]
+  Mean: 0.2359
+sensitive attribute stats:
+  Unique values: [0 1]
+  Counts: [1429  443]
+  Mean: 0.2366
+sensitive attribute stats:
+  Unique values: [0 1]
+  Counts: [1049 1816]
+  Mean: 0.6339
+sensitive attribute stats:
+  Unique values: [0 1]
+  Counts: [359 109]
+  Mean: 0.2329
+sensitive attribute stats:
+  Unique values: [0 1]
+  Counts: [254 462]
+  Mean: 0.6453
+Hparams:  {'data_augmentation': True, 'resnet18': False, 'resnet_dropout': 0.0, 'class_balanced': False, 'nonlinear_classifier': False, 'sag_w_adv': 0.1, 'lr': 0.0001, 'weight_decay': 0.0001, 'batch_size': 32}
+/blue/ufdatastudios/chenz1/.conda/envs/fddg2/lib/python3.8/site-packages/torchvision/models/_utils.py:208: UserWarning: The parameter 'pretrained' is deprecated since 0.13 and may be removed in the future, please use 'weights' instead.
+  warnings.warn(
+/blue/ufdatastudios/chenz1/.conda/envs/fddg2/lib/python3.8/site-packages/torchvision/models/_utils.py:223: UserWarning: Arguments other than a weight enum or `None` for 'weights' are deprecated since 0.13 and may be removed in the future. The current behavior is equivalent to passing `weights=ResNet50_Weights.IMAGENET1K_V1`. You can also use `weights=ResNet50_Weights.DEFAULT` to get the most up-to-date weights.
+  warnings.warn(msg)
+[md] y_1_s_0: 1055.570068359375, y_1_s_1: 334.78765869140625, s_0: 1429.0, s_1: 443.0
+[md] result: 0.01705092191696167
+[dp] s_0: 1429, y_1_s_0: 1429.0, s_1: 443, y_1_s_1: 443.0
+[dp] result: 1.0
+[eo] y_1_s_0: 400.0, yhat_1_y_1_s_0: 400.0, y_1_s_1: 174.0, yhat_1_y_1_s_1: 174.0
+[eo] result: 1.0
+env0_in_acc   env0_out_acc  env1_in_acc   env1_out_acc  epoch         loss_adv      loss_c        loss_s        step          step_time    
+0.3066239316  0.2905982906  0.4900523560  0.4734636872  0.0000000000  0.0707185790  0.7734190226  0.7675307989  0             26.192427635 
+env0_in_md    env0_out_md   env1_in_md    env1_out_md   epoch         loss_adv      loss_c        loss_s        step          step_time    
+0.0170509219  0.0191511512  0.0049768686  0.0010554194  0.0000000000  0.0707185790  0.7734190226  0.7675307989  0             26.192427635 
+env0_in_dp    env0_out_dp   env1_in_dp    env1_out_dp   epoch         loss_adv      loss_c        loss_s        step          step_time    
+1.0000000000  1.0000000000  1.0000000000  1.0000000000  0.0000000000  0.0707185790  0.7734190226  0.7675307989  0             26.192427635 
+env0_in_eo    env0_out_eo   env1_in_eo    env1_out_eo   epoch         loss_adv      loss_c        loss_s        step          step_time    
+1.0000000000  1.0000000000  1.0000000000  1.0000000000  0.0000000000  0.0707185790  0.7734190226  0.7675307989  0             26.192427635 
+env0_in_auc   env0_out_auc  env1_in_auc   env1_out_auc  epoch         loss_adv      loss_c        loss_s        step          step_time    
+0.5768734391  0.5841915617  0.5171350521  0.5103367761  0.0000000000  0.0707185790  0.7734190226  0.7675307989  0             26.192427635 
+
+Processing 5921 total samples across 2 environments
+Predictions saved to grid_search_results/SagNet_lr_0.0001_bs_32_wd_0.0001/step_0_predictions.json
+Total predictions: 5921
+Prediction summary saved to grid_search_results/SagNet_lr_0.0001_bs_32_wd_0.0001/step_0_predictions_summary.json
+[md] y_1_s_0: 504.6116027832031, y_1_s_1: 201.5487823486328, s_0: 1429.0, s_1: 443.0
+[md] result: 0.10184121131896973
+[dp] s_0: 1429, y_1_s_0: 501.0, s_1: 443, y_1_s_1: 203.0
+[dp] result: 0.7650911623064804
+[eo] y_1_s_0: 400.0, yhat_1_y_1_s_0: 396.0, y_1_s_1: 174.0, yhat_1_y_1_s_1: 174.0
+[eo] result: 0.99
+env0_in_acc   env0_out_acc  env1_in_acc   env1_out_acc  epoch         loss_adv      loss_c        loss_s        step          step_time    
+0.9262820513  0.9444444444  0.9773123909  0.9790502793  8.5470085470  0.0713440297  0.1275355364  0.6943195114  500           0.3959556537 
+env0_in_md    env0_out_md   env1_in_md    env1_out_md   epoch         loss_adv      loss_c        loss_s        step          step_time    
+0.1018412113  0.0900997221  0.0363418460  0.0249135494  8.5470085470  0.0713440297  0.1275355364  0.6943195114  500           0.3959556537 
+env0_in_dp    env0_out_dp   env1_in_dp    env1_out_dp   epoch         loss_adv      loss_c        loss_s        step          step_time    
+0.7650911623  0.7759207676  0.9341492439  0.9648065731  8.5470085470  0.0713440297  0.1275355364  0.6943195114  500           0.3959556537 
+env0_in_eo    env0_out_eo   env1_in_eo    env1_out_eo   epoch         loss_adv      loss_c        loss_s        step          step_time    
+0.9900000000  0.9896907216  0.9995484279  0.9955357143  8.5470085470  0.0713440297  0.1275355364  0.6943195114  500           0.3959556537 
+env0_in_auc   env0_out_auc  env1_in_auc   env1_out_auc  epoch         loss_adv      loss_c        loss_s        step          step_time    
+0.5683606430  0.5620352150  0.5192720779  0.5173756690  8.5470085470  0.0713440297  0.1275355364  0.6943195114  500           0.3959556537 
+
+Processing 5921 total samples across 2 environments
+Predictions saved to grid_search_results/SagNet_lr_0.0001_bs_32_wd_0.0001/step_500_predictions.json
+Total predictions: 5921
+Prediction summary saved to grid_search_results/SagNet_lr_0.0001_bs_32_wd_0.0001/step_500_predictions_summary.json
+[md] y_1_s_0: 487.6560363769531, y_1_s_1: 193.03521728515625, s_0: 1429.0, s_1: 443.0
+[md] result: 0.09448856115341187
+[dp] s_0: 1429, y_1_s_0: 492.0, s_1: 443, y_1_s_1: 197.0
+[dp] result: 0.7742306749599486
+[eo] y_1_s_0: 400.0, yhat_1_y_1_s_0: 389.0, y_1_s_1: 174.0, yhat_1_y_1_s_1: 170.0
+[eo] result: 0.9953823529411765
+env0_in_acc   env0_out_acc  env1_in_acc   env1_out_acc  epoch         loss_adv      loss_c        loss_s        step          step_time    
+0.9225427350  0.9401709402  0.9937172775  0.9944134078  17.094017094  0.0703733884  0.0482736891  0.6907961928  1000          0.3945286393 
+env0_in_md    env0_out_md   env1_in_md    env1_out_md   epoch         loss_adv      loss_c        loss_s        step          step_time    
+0.0944885612  0.0972184539  0.0386590064  0.0222916901  17.094017094  0.0703733884  0.0482736891  0.6907961928  1000          0.3945286393 
+env0_in_dp    env0_out_dp   env1_in_dp    env1_out_dp   epoch         loss_adv      loss_c        loss_s        step          step_time    
+0.7742306750  0.7590529248  0.9248720914  0.9547155022  17.094017094  0.0703733884  0.0482736891  0.6907961928  1000          0.3945286393 
+env0_in_eo    env0_out_eo   env1_in_eo    env1_out_eo   epoch         loss_adv      loss_c        loss_s        step          step_time    
+0.9953823529  0.9484536082  0.9974790097  0.9866071429  17.094017094  0.0703733884  0.0482736891  0.6907961928  1000          0.3945286393 
+env0_in_auc   env0_out_auc  env1_in_auc   env1_out_auc  epoch         loss_adv      loss_c        loss_s        step          step_time    
+0.5513840205  0.5317778743  0.5128284542  0.5267324539  17.094017094  0.0703733884  0.0482736891  0.6907961928  1000          0.3945286393 
+
+Processing 5921 total samples across 2 environments
+Predictions saved to grid_search_results/SagNet_lr_0.0001_bs_32_wd_0.0001/step_1000_predictions.json
+Total predictions: 5921
+Prediction summary saved to grid_search_results/SagNet_lr_0.0001_bs_32_wd_0.0001/step_1000_predictions_summary.json
+[md] y_1_s_0: 405.7155456542969, y_1_s_1: 129.75706481933594, s_0: 1429.0, s_1: 443.0
+[md] result: 0.00898963212966919
+[dp] s_0: 1429, y_1_s_0: 0.0, s_1: 443, y_1_s_1: 0.0
+[eo] y_1_s_0: 400.0, yhat_1_y_1_s_0: 0.0, y_1_s_1: 174.0, yhat_1_y_1_s_1: 0.0
+env0_in_acc   env0_out_acc  env1_in_acc   env1_out_acc  epoch         loss_adv      loss_c        loss_s        step          step_time    
+0.6933760684  0.7094017094  0.5099476440  0.5265363128  25.641025641  0.0710617963  0.1093290228  0.7049037067  1500          0.3943808403 
+env0_in_md    env0_out_md   env1_in_md    env1_out_md   epoch         loss_adv      loss_c        loss_s        step          step_time    
+0.0089896321  0.0069269538  0.0036348104  0.0015374422  25.641025641  0.0710617963  0.1093290228  0.7049037067  1500          0.3943808403 
+env0_in_dp    env0_out_dp   env1_in_dp    env1_out_dp   epoch         loss_adv      loss_c        loss_s        step          step_time    
+0             0             0             0             25.641025641  0.0710617963  0.1093290228  0.7049037067  1500          0.3943808403 
+env0_in_eo    env0_out_eo   env1_in_eo    env1_out_eo   epoch         loss_adv      loss_c        loss_s        step          step_time    
+0             0             0             0             25.641025641  0.0710617963  0.1093290228  0.7049037067  1500          0.3943808403 
+env0_in_auc   env0_out_auc  env1_in_auc   env1_out_auc  epoch         loss_adv      loss_c        loss_s        step          step_time    
+0.5518784545  0.5455776750  0.5247597880  0.5150662985  25.641025641  0.0710617963  0.1093290228  0.7049037067  1500          0.3943808403 
+
+Processing 5921 total samples across 2 environments
+Predictions saved to grid_search_results/SagNet_lr_0.0001_bs_32_wd_0.0001/step_1500_predictions.json
+Total predictions: 5921
+Prediction summary saved to grid_search_results/SagNet_lr_0.0001_bs_32_wd_0.0001/step_1500_predictions_summary.json
+[md] y_1_s_0: 522.2566528320312, y_1_s_1: 203.838134765625, s_0: 1429.0, s_1: 443.0
+[md] result: 0.09466120600700378
+[dp] s_0: 1429, y_1_s_0: 506.0, s_1: 443, y_1_s_1: 204.0
+[dp] result: 0.7689389261652878
+[eo] y_1_s_0: 400.0, yhat_1_y_1_s_0: 397.0, y_1_s_1: 174.0, yhat_1_y_1_s_1: 168.0
+[eo] result: 1.0279464285714286
+env0_in_acc   env0_out_acc  env1_in_acc   env1_out_acc  epoch         loss_adv      loss_c        loss_s        step          step_time    
+0.9177350427  0.9508547009  0.9912739965  0.9846368715  34.188034188  0.0712445209  0.1989269428  0.6747363900  2000          0.3935408111 
+env0_in_md    env0_out_md   env1_in_md    env1_out_md   epoch         loss_adv      loss_c        loss_s        step          step_time    
+0.0946612060  0.0753538609  0.0432018936  0.0255860686  34.188034188  0.0712445209  0.1989269428  0.6747363900  2000          0.3935408111 
+env0_in_dp    env0_out_dp   env1_in_dp    env1_out_dp   epoch         loss_adv      loss_c        loss_s        step          step_time    
+0.7689389262  0.8458018305  0.9214783931  0.9340285167  34.188034188  0.0712445209  0.1989269428  0.6747363900  2000          0.3935408111 
+env0_in_eo    env0_out_eo   env1_in_eo    env1_out_eo   epoch         loss_adv      loss_c        loss_s        step          step_time    
+0.9728133414  1.0000000000  0.9960777736  0.9916205534  34.188034188  0.0712445209  0.1989269428  0.6747363900  2000          0.3935408111 
+env0_in_auc   env0_out_auc  env1_in_auc   env1_out_auc  epoch         loss_adv      loss_c        loss_s        step          step_time    
+0.5570865986  0.5324423092  0.5226070140  0.5123138017  34.188034188  0.0712445209  0.1989269428  0.6747363900  2000          0.3935408111 
+
+Processing 5921 total samples across 2 environments
+Predictions saved to grid_search_results/SagNet_lr_0.0001_bs_32_wd_0.0001/step_2000_predictions.json
+Total predictions: 5921
+Prediction summary saved to grid_search_results/SagNet_lr_0.0001_bs_32_wd_0.0001/step_2000_predictions_summary.json
+[md] y_1_s_0: 464.00384521484375, y_1_s_1: 181.77474975585938, s_0: 1429.0, s_1: 443.0
+[md] result: 0.08562147617340088
+[dp] s_0: 1429, y_1_s_0: 470.0, s_1: 443, y_1_s_1: 184.0
+[dp] result: 0.7918657011592175
+[eo] y_1_s_0: 400.0, yhat_1_y_1_s_0: 391.0, y_1_s_1: 174.0, yhat_1_y_1_s_1: 165.0
+[eo] result: 1.0308181818181819
+env0_in_acc   env0_out_acc  env1_in_acc   env1_out_acc  epoch         loss_adv      loss_c        loss_s        step          step_time    
+0.9380341880  0.9764957265  0.9965095986  0.9776536313  42.735042735  0.0730851630  0.0356370555  0.6926753824  2500          0.3942845368 
+env0_in_md    env0_out_md   env1_in_md    env1_out_md   epoch         loss_adv      loss_c        loss_s        step          step_time    
+0.0856214762  0.0769288242  0.0369850695  0.0253078341  42.735042735  0.0730851630  0.0356370555  0.6926753824  2500          0.3942845368 
+env0_in_dp    env0_out_dp   env1_in_dp    env1_out_dp   epoch         loss_adv      loss_c        loss_s        step          step_time    
+0.7918657012  0.7970055710  0.9248720914  0.9387858776  42.735042735  0.0730851630  0.0356370555  0.6926753824  2500          0.3942845368 
+env0_in_eo    env0_out_eo   env1_in_eo    env1_out_eo   epoch         loss_adv      loss_c        loss_s        step          step_time    
+0.9701031837  0.9896907216  0.9990951708  0.9919484702  42.735042735  0.0730851630  0.0356370555  0.6926753824  2500          0.3942845368 
+env0_in_auc   env0_out_auc  env1_in_auc   env1_out_auc  epoch         loss_adv      loss_c        loss_s        step          step_time    
+0.5266370427  0.5061460223  0.5276642743  0.5014145959  42.735042735  0.0730851630  0.0356370555  0.6926753824  2500          0.3942845368 
+
+Processing 5921 total samples across 2 environments
+Predictions saved to grid_search_results/SagNet_lr_0.0001_bs_32_wd_0.0001/step_2500_predictions.json
+Total predictions: 5921
+Prediction summary saved to grid_search_results/SagNet_lr_0.0001_bs_32_wd_0.0001/step_2500_predictions_summary.json
+[md] y_1_s_0: 435.87567138671875, y_1_s_1: 171.00509643554688, s_0: 1429.0, s_1: 443.0
+[md] result: 0.08099454641342163
+[dp] s_0: 1429, y_1_s_0: 442.0, s_1: 443, y_1_s_1: 168.0
+[dp] result: 0.8156136492385617
+[eo] y_1_s_0: 400.0, yhat_1_y_1_s_0: 386.0, y_1_s_1: 174.0, yhat_1_y_1_s_1: 158.0
+[eo] result: 1.0627215189873418
+env0_in_acc   env0_out_acc  env1_in_acc   env1_out_acc  epoch         loss_adv      loss_c        loss_s        step          step_time    
+0.9487179487  0.9807692308  0.9958115183  0.9818435754  51.282051282  0.0706484857  0.0196221096  0.6972341077  3000          0.3948204751 
+env0_in_md    env0_out_md   env1_in_md    env1_out_md   epoch         loss_adv      loss_c        loss_s        step          step_time    
+0.0809945464  0.0699945092  0.0382759571  0.0246484876  51.282051282  0.0706484857  0.0196221096  0.6972341077  3000          0.3948204751 
+env0_in_dp    env0_out_dp   env1_in_dp    env1_out_dp   epoch         loss_adv      loss_c        loss_s        step          step_time    
+0.8156136492  0.8069931095  0.9218625666  0.9431321085  51.282051282  0.0706484857  0.0196221096  0.6972341077  3000          0.3948204751 
+env0_in_eo    env0_out_eo   env1_in_eo    env1_out_eo   epoch         loss_adv      loss_c        loss_s        step          step_time    
+0.9409802871  0.9948717949  0.9932999552  0.9990347490  51.282051282  0.0706484857  0.0196221096  0.6972341077  3000          0.3948204751 
+env0_in_auc   env0_out_auc  env1_in_auc   env1_out_auc  epoch         loss_adv      loss_c        loss_s        step          step_time    
+0.5346775200  0.5153969998  0.5333278390  0.5006476463  51.282051282  0.0706484857  0.0196221096  0.6972341077  3000          0.3948204751 
+
+Processing 5921 total samples across 2 environments
+Predictions saved to grid_search_results/SagNet_lr_0.0001_bs_32_wd_0.0001/step_3000_predictions.json
+Total predictions: 5921
+Prediction summary saved to grid_search_results/SagNet_lr_0.0001_bs_32_wd_0.0001/step_3000_predictions_summary.json
+[md] y_1_s_0: 464.568603515625, y_1_s_1: 186.42466735839844, s_0: 1429.0, s_1: 443.0
+[md] result: 0.09572270512580872
+[dp] s_0: 1429, y_1_s_0: 466.0, s_1: 443, y_1_s_1: 189.0
+[dp] result: 0.7643558784216586
+[eo] y_1_s_0: 400.0, yhat_1_y_1_s_0: 393.0, y_1_s_1: 174.0, yhat_1_y_1_s_1: 169.0
+[eo] result: 1.0115680473372781
+env0_in_acc   env0_out_acc  env1_in_acc   env1_out_acc  epoch         loss_adv      loss_c        loss_s        step          step_time    
+0.9439102564  0.9786324786  1.0000000000  0.9930167598  59.829059829  0.0705394589  0.0174918016  0.6976413327  3500          0.3948551126 
+env0_in_md    env0_out_md   env1_in_md    env1_out_md   epoch         loss_adv      loss_c        loss_s        step          step_time    
+0.0957227051  0.0763326287  0.0363078415  0.0206976533  59.829059829  0.0705394589  0.0174918016  0.6976413327  3500          0.3948551126 
+env0_in_dp    env0_out_dp   env1_in_dp    env1_out_dp   epoch         loss_adv      loss_c        loss_s        step          step_time    
+0.7643558784  0.8045961003  0.9298122431  0.9590551181  59.829059829  0.0705394589  0.0174918016  0.6976413327  3500          0.3948551126 
+env0_in_eo    env0_out_eo   env1_in_eo    env1_out_eo   epoch         loss_adv      loss_c        loss_s        step          step_time    
+0.9885642421  1.0000000000  1.0000000000  0.9821428571  59.829059829  0.0705394589  0.0174918016  0.6976413327  3500          0.3948551126 
+env0_in_auc   env0_out_auc  env1_in_auc   env1_out_auc  epoch         loss_adv      loss_c        loss_s        step          step_time    
+0.5259388323  0.5108481766  0.5274180781  0.5002812148  59.829059829  0.0705394589  0.0174918016  0.6976413327  3500          0.3948551126 
+
+Processing 5921 total samples across 2 environments
+Predictions saved to grid_search_results/SagNet_lr_0.0001_bs_32_wd_0.0001/step_3500_predictions.json
+Total predictions: 5921
+Prediction summary saved to grid_search_results/SagNet_lr_0.0001_bs_32_wd_0.0001/step_3500_predictions_summary.json
+[md] y_1_s_0: 474.14984130859375, y_1_s_1: 189.40682983398438, s_0: 1429.0, s_1: 443.0
+[md] result: 0.09574958682060242
+[dp] s_0: 1429, y_1_s_0: 475.0, s_1: 443, y_1_s_1: 189.0
+[dp] result: 0.7791181164169267
+[eo] y_1_s_0: 400.0, yhat_1_y_1_s_0: 396.0, y_1_s_1: 174.0, yhat_1_y_1_s_1: 169.0
+[eo] result: 1.0192899408284024
+env0_in_acc   env0_out_acc  env1_in_acc   env1_out_acc  epoch         loss_adv      loss_c        loss_s        step          step_time    
+0.9423076923  0.9722222222  1.0000000000  0.9916201117  68.376068376  0.0700185678  0.0003121869  0.7003712895  4000          0.3959424357 
+env0_in_md    env0_out_md   env1_in_md    env1_out_md   epoch         loss_adv      loss_c        loss_s        step          step_time    
+0.0957495868  0.0759652257  0.0360726714  0.0193734467  68.376068376  0.0700185678  0.0003121869  0.7003712895  4000          0.3959424357 
+env0_in_dp    env0_out_dp   env1_in_dp    env1_out_dp   epoch         loss_adv      loss_c        loss_s        step          step_time    
+0.7791181164  0.7849718051  0.9298122431  0.9673228346  68.376068376  0.0700185678  0.0003121869  0.7003712895  4000          0.3959424357 
+env0_in_eo    env0_out_eo   env1_in_eo    env1_out_eo   epoch         loss_adv      loss_c        loss_s        step          step_time    
+0.9810751190  0.9896907216  1.0000000000  0.9821428571  68.376068376  0.0700185678  0.0003121869  0.7003712895  4000          0.3959424357 
+env0_in_auc   env0_out_auc  env1_in_auc   env1_out_auc  epoch         loss_adv      loss_c        loss_s        step          step_time    
+0.5246529879  0.5011372058  0.5277671623  0.5000852166  68.376068376  0.0700185678  0.0003121869  0.7003712895  4000          0.3959424357 
+
+Processing 5921 total samples across 2 environments
+Predictions saved to grid_search_results/SagNet_lr_0.0001_bs_32_wd_0.0001/step_4000_predictions.json
+Total predictions: 5921
+Prediction summary saved to grid_search_results/SagNet_lr_0.0001_bs_32_wd_0.0001/step_4000_predictions_summary.json
+[md] y_1_s_0: 485.00982666015625, y_1_s_1: 194.01991271972656, s_0: 1429.0, s_1: 443.0
+[md] result: 0.09856313467025757
+[dp] s_0: 1429, y_1_s_0: 486.0, s_1: 443, y_1_s_1: 195.0
+[dp] result: 0.7726328255369543
+[eo] y_1_s_0: 400.0, yhat_1_y_1_s_0: 397.0, y_1_s_1: 174.0, yhat_1_y_1_s_1: 170.0
+[eo] result: 1.0158529411764705
+env0_in_acc   env0_out_acc  env1_in_acc   env1_out_acc  epoch         loss_adv      loss_c        loss_s        step          step_time    
+0.9353632479  0.9722222222  1.0000000000  0.9930167598  76.923076923  0.0697330851  0.0001403736  0.6958205520  4500          0.4000130186 
+env0_in_md    env0_out_md   env1_in_md    env1_out_md   epoch         loss_adv      loss_c        loss_s        step          step_time    
+0.0985631347  0.0712352693  0.0360539854  0.0196405053  76.923076923  0.0697330851  0.0001403736  0.6958205520  4500          0.4000130186 
+env0_in_dp    env0_out_dp   env1_in_dp    env1_out_dp   epoch         loss_adv      loss_c        loss_s        step          step_time    
+0.7726328255  0.7849718051  0.9298122431  0.9629458082  76.923076923  0.0697330851  0.0001403736  0.6958205520  4500          0.4000130186 
+env0_in_eo    env0_out_eo   env1_in_eo    env1_out_eo   epoch         loss_adv      loss_c        loss_s        step          step_time    
+0.9843944526  0.9896907216  1.0000000000  0.9866071429  76.923076923  0.0697330851  0.0001403736  0.6958205520  4500          0.4000130186 
+env0_in_auc   env0_out_auc  env1_in_auc   env1_out_auc  epoch         loss_adv      loss_c        loss_s        step          step_time    
+0.5278091516  0.5019549718  0.5273456365  0.5012526843  76.923076923  0.0697330851  0.0001403736  0.6958205520  4500          0.4000130186 
+
+Processing 5921 total samples across 2 environments
+Predictions saved to grid_search_results/SagNet_lr_0.0001_bs_32_wd_0.0001/step_4500_predictions.json
+Total predictions: 5921
+Prediction summary saved to grid_search_results/SagNet_lr_0.0001_bs_32_wd_0.0001/step_4500_predictions_summary.json
+[md] y_1_s_0: 510.50872802734375, y_1_s_1: 202.20252990722656, s_0: 1429.0, s_1: 443.0
+[md] result: 0.09919017553329468
+[dp] s_0: 1429, y_1_s_0: 508.0, s_1: 443, y_1_s_1: 202.0
+[dp] result: 0.7796215590768314
+[eo] y_1_s_0: 400.0, yhat_1_y_1_s_0: 399.0, y_1_s_1: 174.0, yhat_1_y_1_s_1: 171.0
+[eo] result: 1.0150000000000001
+env0_in_acc   env0_out_acc  env1_in_acc   env1_out_acc  epoch         loss_adv      loss_c        loss_s        step          step_time    
+0.9230769231  0.9594017094  1.0000000000  0.9930167598  85.470085470  0.0697097344  0.0001364262  0.6952630183  5000          0.3979542694 
+env0_in_md    env0_out_md   env1_in_md    env1_out_md   epoch         loss_adv      loss_c        loss_s        step          step_time    
+0.0991901755  0.0620299876  0.0357609093  0.0216528177  85.470085470  0.0697097344  0.0001364262  0.6952630183  5000          0.3979542694 
+env0_in_dp    env0_out_dp   env1_in_dp    env1_out_dp   epoch         loss_adv      loss_c        loss_s        step          step_time    
+0.7796215591  0.8442149603  0.9298122431  0.9543095230  85.470085470  0.0697097344  0.0001364262  0.6952630183  5000          0.3979542694 
+env0_in_eo    env0_out_eo   env1_in_eo    env1_out_eo   epoch         loss_adv      loss_c        loss_s        step          step_time    
+0.9852216749  1.0000000000  1.0000000000  0.9910714286  85.470085470  0.0697097344  0.0001364262  0.6952630183  5000          0.3979542694 
+env0_in_auc   env0_out_auc  env1_in_auc   env1_out_auc  epoch         loss_adv      loss_c        loss_s        step          step_time    
+0.5307362644  0.5086759858  0.5182778438  0.5072008044  85.470085470  0.0697097344  0.0001364262  0.6952630183  5000          0.3979542694 
+
+Processing 5921 total samples across 2 environments
+Predictions saved to grid_search_results/SagNet_lr_0.0001_bs_32_wd_0.0001/step_5000_predictions.json
+Total predictions: 5921
+Prediction summary saved to grid_search_results/SagNet_lr_0.0001_bs_32_wd_0.0001/step_5000_predictions_summary.json
+[md] y_1_s_0: 420.0995788574219, y_1_s_1: 174.75204467773438, s_0: 1429.0, s_1: 443.0
+[md] result: 0.10049262642860413
+[dp] s_0: 1429, y_1_s_0: 424.0, s_1: 443, y_1_s_1: 178.0
+[dp] result: 0.7384436354486913
+[eo] y_1_s_0: 400.0, yhat_1_y_1_s_0: 379.0, y_1_s_1: 174.0, yhat_1_y_1_s_1: 164.0
+[eo] result: 1.0052743902439025
+env0_in_acc   env0_out_acc  env1_in_acc   env1_out_acc  epoch         loss_adv      loss_c        loss_s        step          step_time    
+0.9519230769  0.9764957265  0.9748691099  0.9678770950  94.017094017  0.0713596802  0.2599857428  0.6597396496  5500          0.3942892780 
+env0_in_md    env0_out_md   env1_in_md    env1_out_md   epoch         loss_adv      loss_c        loss_s        step          step_time    
+0.1004926264  0.0901532769  0.0306563675  0.0312336981  94.017094017  0.0713596802  0.2599857428  0.6597396496  5500          0.3942892780 
+env0_in_dp    env0_out_dp   env1_in_dp    env1_out_dp   epoch         loss_adv      loss_c        loss_s        step          step_time    
+0.7384436354  0.7405394388  0.9482067160  0.9094488189  94.017094017  0.0713596802  0.2599857428  0.6597396496  5500          0.3942892780 
+env0_in_eo    env0_out_eo   env1_in_eo    env1_out_eo   epoch         loss_adv      loss_c        loss_s        step          step_time    
+0.9947532830  0.9690721649  0.9924682695  0.9648953301  94.017094017  0.0713596802  0.2599857428  0.6597396496  5500          0.3942892780 
+env0_in_auc   env0_out_auc  env1_in_auc   env1_out_auc  epoch         loss_adv      loss_c        loss_s        step          step_time    
+0.5698550029  0.5511998160  0.5221959869  0.5104134710  94.017094017  0.0713596802  0.2599857428  0.6597396496  5500          0.3942892780 
+
+Processing 5921 total samples across 2 environments
+Predictions saved to grid_search_results/SagNet_lr_0.0001_bs_32_wd_0.0001/step_5500_predictions.json
+Total predictions: 5921
+Prediction summary saved to grid_search_results/SagNet_lr_0.0001_bs_32_wd_0.0001/step_5500_predictions_summary.json
+[md] y_1_s_0: 446.6548767089844, y_1_s_1: 184.67767333984375, s_0: 1429.0, s_1: 443.0
+[md] result: 0.10431498289108276
+[dp] s_0: 1429, y_1_s_0: 449.0, s_1: 443, y_1_s_1: 186.0
+[dp] result: 0.7483502261149612
+[eo] y_1_s_0: 400.0, yhat_1_y_1_s_0: 391.0, y_1_s_1: 174.0, yhat_1_y_1_s_1: 167.0
+[eo] result: 1.0184730538922155
+env0_in_acc   env0_out_acc  env1_in_acc   env1_out_acc  epoch         loss_adv      loss_c        loss_s        step          step_time    
+0.9503205128  0.9700854701  0.9944153578  0.9804469274  102.56410256  0.0708429748  0.0694138722  0.6997068871  6000          0.3948993115 
+env0_in_md    env0_out_md   env1_in_md    env1_out_md   epoch         loss_adv      loss_c        loss_s        step          step_time    
+0.1043149829  0.0676984787  0.0384412706  0.0342627466  102.56410256  0.0708429748  0.0694138722  0.6997068871  6000          0.3948993115 
+env0_in_dp    env0_out_dp   env1_in_dp    env1_out_dp   epoch         loss_adv      loss_c        loss_s        step          step_time    
+0.7483502261  0.8018712949  0.9285079132  0.9377427822  102.56410256  0.0708429748  0.0694138722  0.6997068871  6000          0.3948993115 
+env0_in_eo    env0_out_eo   env1_in_eo    env1_out_eo   epoch         loss_adv      loss_c        loss_s        step          step_time    
+0.9818620102  0.9945740640  0.9978806532  0.9871335825  102.56410256  0.0708429748  0.0694138722  0.6997068871  6000          0.3948993115 
+env0_in_auc   env0_out_auc  env1_in_auc   env1_out_auc  epoch         loss_adv      loss_c        loss_s        step          step_time    
+0.5569017782  0.5196391608  0.5364769468  0.5092630467  102.56410256  0.0708429748  0.0694138722  0.6997068871  6000          0.3948993115 
+
+Processing 5921 total samples across 2 environments
+Predictions saved to grid_search_results/SagNet_lr_0.0001_bs_32_wd_0.0001/step_6000_predictions.json
+Total predictions: 5921
+Prediction summary saved to grid_search_results/SagNet_lr_0.0001_bs_32_wd_0.0001/step_6000_predictions_summary.json
+[md] y_1_s_0: 434.8376159667969, y_1_s_1: 178.70416259765625, s_0: 1429.0, s_1: 443.0
+[md] result: 0.09910038113594055
+[dp] s_0: 1429, y_1_s_0: 441.0, s_1: 443, y_1_s_1: 183.0
+[dp] result: 0.7470660441211898
+[eo] y_1_s_0: 400.0, yhat_1_y_1_s_0: 387.0, y_1_s_1: 174.0, yhat_1_y_1_s_1: 167.0
+[eo] result: 1.0080538922155688
+env0_in_acc   env0_out_acc  env1_in_acc   env1_out_acc  epoch         loss_adv      loss_c        loss_s        step          step_time    
+0.9519230769  0.9722222222  0.9909249564  0.9692737430  111.11111111  0.0706562225  0.0308241216  0.6838717293  6500          0.3946431003 
+env0_in_md    env0_out_md   env1_in_md    env1_out_md   epoch         loss_adv      loss_c        loss_s        step          step_time    
+0.0991003811  0.0890859365  0.0339894593  0.0376687348  111.11111111  0.0706562225  0.0308241216  0.6838717293  6500          0.3946431003 
+env0_in_dp    env0_out_dp   env1_in_dp    env1_out_dp   epoch         loss_adv      loss_c        loss_s        step          step_time    
+0.7470660441  0.7405394388  0.9448438498  0.9422217493  111.11111111  0.0706562225  0.0308241216  0.6838717293  6500          0.3946431003 
+env0_in_eo    env0_out_eo   env1_in_eo    env1_out_eo   epoch         loss_adv      loss_c        loss_s        step          step_time    
+0.9920104547  0.9587628866  0.9978806532  0.9990347490  111.11111111  0.0706562225  0.0308241216  0.6838717293  6500          0.3946431003 
+env0_in_auc   env0_out_auc  env1_in_auc   env1_out_auc  epoch         loss_adv      loss_c        loss_s        step          step_time    
+0.5504520202  0.5393933199  0.5278128320  0.5017213757  111.11111111  0.0706562225  0.0308241216  0.6838717293  6500          0.3946431003 
+
+Processing 5921 total samples across 2 environments
+Predictions saved to grid_search_results/SagNet_lr_0.0001_bs_32_wd_0.0001/step_6500_predictions.json
+Total predictions: 5921
+Prediction summary saved to grid_search_results/SagNet_lr_0.0001_bs_32_wd_0.0001/step_6500_predictions_summary.json
+[md] y_1_s_0: 396.8477478027344, y_1_s_1: 168.28399658203125, s_0: 1429.0, s_1: 443.0
+[md] result: 0.10216346383094788
+[dp] s_0: 1429, y_1_s_0: 397.0, s_1: 443, y_1_s_1: 172.0
+[dp] result: 0.7155394079450583
+[eo] y_1_s_0: 400.0, yhat_1_y_1_s_0: 362.0, y_1_s_1: 174.0, yhat_1_y_1_s_1: 156.0
+[eo] result: 1.009423076923077
+env0_in_acc   env0_out_acc  env1_in_acc   env1_out_acc  epoch         loss_adv      loss_c        loss_s        step          step_time    
+0.9428418803  0.9508547009  0.9828970332  0.9525139665  119.65811965  0.0703644348  0.0234259388  0.6879239011  7000          0.3948311448 
+env0_in_md    env0_out_md   env1_in_md    env1_out_md   epoch         loss_adv      loss_c        loss_s        step          step_time    
+0.1021634638  0.0595334172  0.0397335589  0.0185528994  119.65811965  0.0703644348  0.0234259388  0.6879239011  7000          0.3948311448 
+env0_in_dp    env0_out_dp   env1_in_dp    env1_out_dp   epoch         loss_adv      loss_c        loss_s        step          step_time    
+0.7155394079  0.8648603022  0.9163371758  0.9573145462  119.65811965  0.0703644348  0.0234259388  0.6879239011  7000          0.3948311448 
+env0_in_eo    env0_out_eo   env1_in_eo    env1_out_eo   epoch         loss_adv      loss_c        loss_s        step          step_time    
+0.9906648886  0.9044289044  0.9868954141  0.9977257412  119.65811965  0.0703644348  0.0234259388  0.6879239011  7000          0.3948311448 
+env0_in_auc   env0_out_auc  env1_in_auc   env1_out_auc  epoch         loss_adv      loss_c        loss_s        step          step_time    
+0.5370991411  0.5134036953  0.5261104555  0.5025394553  119.65811965  0.0703644348  0.0234259388  0.6879239011  7000          0.3948311448 
+
+Processing 5921 total samples across 2 environments
+Predictions saved to grid_search_results/SagNet_lr_0.0001_bs_32_wd_0.0001/step_7000_predictions.json
+Total predictions: 5921
+Prediction summary saved to grid_search_results/SagNet_lr_0.0001_bs_32_wd_0.0001/step_7000_predictions_summary.json
+[md] y_1_s_0: 455.9420471191406, y_1_s_1: 186.63275146484375, s_0: 1429.0, s_1: 443.0
+[md] result: 0.10222917795181274
+[dp] s_0: 1429, y_1_s_0: 459.0, s_1: 443, y_1_s_1: 187.0
+[dp] result: 0.7609262675742732
+[eo] y_1_s_0: 400.0, yhat_1_y_1_s_0: 385.0, y_1_s_1: 174.0, yhat_1_y_1_s_1: 168.0
+[eo] result: 0.996875
+env0_in_acc   env0_out_acc  env1_in_acc   env1_out_acc  epoch         loss_adv      loss_c        loss_s        step          step_time    
+0.9391025641  0.9551282051  1.0000000000  0.9790502793  128.20512820  0.0703253799  0.0089891927  0.6994048626  7500          0.4027815247 
+env0_in_md    env0_out_md   env1_in_md    env1_out_md   epoch         loss_adv      loss_c        loss_s        step          step_time    
+0.1022291780  0.0749397576  0.0360195935  0.0321600437  128.20512820  0.0703253799  0.0089891927  0.6994048626  7500          0.4027815247 
+env0_in_dp    env0_out_dp   env1_in_dp    env1_out_dp   epoch         loss_adv      loss_c        loss_s        step          step_time    
+0.7609262676  0.7997825939  0.9298122431  0.9340285167  128.20512820  0.0703253799  0.0089891927  0.6994048626  7500          0.4027815247 
+env0_in_eo    env0_out_eo   env1_in_eo    env1_out_eo   epoch         loss_adv      loss_c        loss_s        step          step_time    
+0.9968750000  0.9945740640  1.0000000000  0.9872543180  128.20512820  0.0703253799  0.0089891927  0.6994048626  7500          0.4027815247 
+env0_in_auc   env0_out_auc  env1_in_auc   env1_out_auc  epoch         loss_adv      loss_c        loss_s        step          step_time    
+0.5508232406  0.5253379673  0.5180111749  0.5052152572  128.20512820  0.0703253799  0.0089891927  0.6994048626  7500          0.4027815247 
+
+Processing 5921 total samples across 2 environments
+Predictions saved to grid_search_results/SagNet_lr_0.0001_bs_32_wd_0.0001/step_7500_predictions.json
+Total predictions: 5921
+Prediction summary saved to grid_search_results/SagNet_lr_0.0001_bs_32_wd_0.0001/step_7500_predictions_summary.json
+[md] y_1_s_0: 454.3651428222656, y_1_s_1: 186.696044921875, s_0: 1429.0, s_1: 443.0
+[md] result: 0.10347557067871094
+[dp] s_0: 1429, y_1_s_0: 458.0, s_1: 443, y_1_s_1: 188.0
+[dp] result: 0.755229814034513
+[eo] y_1_s_0: 400.0, yhat_1_y_1_s_0: 384.0, y_1_s_1: 174.0, yhat_1_y_1_s_1: 168.0
+[eo] result: 0.9942857142857142
+env0_in_acc   env0_out_acc  env1_in_acc   env1_out_acc  epoch         loss_adv      loss_c        loss_s        step          step_time    
+0.9380341880  0.9594017094  1.0000000000  0.9818435754  136.75213675  0.0697428515  0.0001711273  0.6954441577  8000          0.3996522741 
+env0_in_md    env0_out_md   env1_in_md    env1_out_md   epoch         loss_adv      loss_c        loss_s        step          step_time    
+0.1034755707  0.0798438191  0.0359619856  0.0323108435  136.75213675  0.0697428515  0.0001711273  0.6954441577  8000          0.3996522741 
+env0_in_dp    env0_out_dp   env1_in_dp    env1_out_dp   epoch         loss_adv      loss_c        loss_s        step          step_time    
+0.7552298140  0.7849718051  0.9298122431  0.9379965397  136.75213675  0.0697428515  0.0001711273  0.6954441577  8000          0.3996522741 
+env0_in_eo    env0_out_eo   env1_in_eo    env1_out_eo   epoch         loss_adv      loss_c        loss_s        step          step_time    
+0.9942857143  0.9945740640  1.0000000000  0.9916205534  136.75213675  0.0697428515  0.0001711273  0.6954441577  8000          0.3996522741 
+env0_in_auc   env0_out_auc  env1_in_auc   env1_out_auc  epoch         loss_adv      loss_c        loss_s        step          step_time    
+0.5515798985  0.5271012752  0.5190647271  0.5055646453  136.75213675  0.0697428515  0.0001711273  0.6954441577  8000          0.3996522741 
+
+Processing 5921 total samples across 2 environments
+Predictions saved to grid_search_results/SagNet_lr_0.0001_bs_32_wd_0.0001/step_8000_predictions.json
+Total predictions: 5921
+Prediction summary saved to grid_search_results/SagNet_lr_0.0001_bs_32_wd_0.0001/step_8000_predictions_summary.json

@@ -1,0 +1,445 @@
+Environment:
+	Python: 3.8.15
+	PyTorch: 2.4.1
+	Torchvision: 0.20.0
+	CUDA: 12.1
+	CUDNN: 90100
+	NumPy: 1.23.5
+	PIL: 9.4.0
+Args:
+	algorithm: IGA
+	checkpoint_freq: None
+	data_dir: /home/chenz1/toorange/Data
+	dataset: BDDPerson
+	holdout_fraction: 0.2
+	hparams: {"lr": 5e-05, "batch_size": 32, "weight_decay": 0.0, "penalty": 1000}
+	hparams_seed: 0
+	output_dir: grid_search_results/IGA_lr_5e-05_bs_32_wd_0.0
+	save_model_every_checkpoint: False
+	save_predictions_every_checkpoint: True
+	seed: 0
+	skip_model_save: False
+	step: 2
+	steps: None
+	task: domain_generalization
+	test_envs: [0]
+	trial_seed: 0
+	uda_holdout_fraction: 0
+HParams:
+	batch_size: 32
+	class_balanced: False
+	data_augmentation: True
+	lr: 5e-05
+	nonlinear_classifier: False
+	penalty: 1000
+	resnet18: False
+	resnet_dropout: 0.0
+	weight_decay: 0.0
+[SensitiveImageFolder] Second element counts: 0s=3091, 1s=2830
+[SensitiveImageFolder] Second element counts: 0s=3091, 1s=2830
+
+Debugging dataset splitting:
+Dataset type: <class 'domainbed.datasets.BDDPerson'>
+Number of environments: 2
+Test environments: [0]
+Holdout fraction: 0.2
+
+Processing environment 0:
+Environment size: 2340
+Split sizes - in: 1872, out: 468
+Test env split - in: 1872, uda: 0
+
+Processing environment 1:
+Environment size: 3581
+Split sizes - in: 2865, out: 716
+
+Final split sizes:
+In splits: [1872, 2865]
+Out splits: [468, 716]
+UDA splits: []
+sensitive attribute stats:
+  Unique values: [0 1]
+  Counts: [1303 2278]
+  Mean: 0.6361
+sensitive attribute stats:
+  Unique values: [0 1]
+  Counts: [1788  552]
+  Mean: 0.2359
+sensitive attribute stats:
+  Unique values: [0 1]
+  Counts: [1429  443]
+  Mean: 0.2366
+sensitive attribute stats:
+  Unique values: [0 1]
+  Counts: [1049 1816]
+  Mean: 0.6339
+sensitive attribute stats:
+  Unique values: [0 1]
+  Counts: [359 109]
+  Mean: 0.2329
+sensitive attribute stats:
+  Unique values: [0 1]
+  Counts: [254 462]
+  Mean: 0.6453
+Hparams:  {'data_augmentation': True, 'resnet18': False, 'resnet_dropout': 0.0, 'class_balanced': False, 'nonlinear_classifier': False, 'penalty': 1000, 'lr': 5e-05, 'weight_decay': 0.0, 'batch_size': 32}
+/blue/ufdatastudios/chenz1/.conda/envs/fddg2/lib/python3.8/site-packages/torchvision/models/_utils.py:208: UserWarning: The parameter 'pretrained' is deprecated since 0.13 and may be removed in the future, please use 'weights' instead.
+  warnings.warn(
+/blue/ufdatastudios/chenz1/.conda/envs/fddg2/lib/python3.8/site-packages/torchvision/models/_utils.py:223: UserWarning: Arguments other than a weight enum or `None` for 'weights' are deprecated since 0.13 and may be removed in the future. The current behavior is equivalent to passing `weights=ResNet50_Weights.IMAGENET1K_V1`. You can also use `weights=ResNet50_Weights.DEFAULT` to get the most up-to-date weights.
+  warnings.warn(msg)
+[md] y_1_s_0: 797.0660400390625, y_1_s_1: 258.5070495605469, s_0: 1429.0, s_1: 443.0
+[md] result: 0.025758445262908936
+[dp] s_0: 1429, y_1_s_0: 918.0, s_1: 443, y_1_s_1: 313.0
+[dp] result: 0.9092218021494509
+[eo] y_1_s_0: 400.0, yhat_1_y_1_s_0: 400.0, y_1_s_1: 174.0, yhat_1_y_1_s_1: 174.0
+[eo] result: 1.0
+env0_in_acc   env0_out_acc  env1_in_acc   env1_out_acc  epoch         loss          penalty       step          step_time    
+0.6490384615  0.6581196581  0.7808027923  0.8058659218  0.0000000000  0.7724317312  0.0000000000  0             31.222513198 
+env0_in_md    env0_out_md   env1_in_md    env1_out_md   epoch         loss          penalty       step          step_time    
+0.0257584453  0.0280891061  0.0080338717  0.0059504509  0.0000000000  0.7724317312  0.0000000000  0             31.222513198 
+env0_in_dp    env0_out_dp   env1_in_dp    env1_out_dp   epoch         loss          penalty       step          step_time    
+0.9092218021  0.8059080436  0.9467346530  0.9960784314  0.0000000000  0.7724317312  0.0000000000  0             31.222513198 
+env0_in_eo    env0_out_eo   env1_in_eo    env1_out_eo   epoch         loss          penalty       step          step_time    
+1.0000000000  1.0000000000  1.0000000000  1.0000000000  0.0000000000  0.7724317312  0.0000000000  0             31.222513198 
+env0_in_auc   env0_out_auc  env1_in_auc   env1_out_auc  epoch         loss          penalty       step          step_time    
+0.5782714396  0.5860570903  0.5197067272  0.5100385179  0.0000000000  0.7724317312  0.0000000000  0             31.222513198 
+
+Processing 5921 total samples across 2 environments
+Predictions saved to grid_search_results/IGA_lr_5e-05_bs_32_wd_0.0/step_0_predictions.json
+Total predictions: 5921
+Prediction summary saved to grid_search_results/IGA_lr_5e-05_bs_32_wd_0.0/step_0_predictions_summary.json
+[md] y_1_s_0: 383.5697021484375, y_1_s_1: 163.78651428222656, s_0: 1429.0, s_1: 443.0
+[md] result: 0.10130301117897034
+[dp] s_0: 1429, y_1_s_0: 390.0, s_1: 443, y_1_s_1: 165.0
+[dp] result: 0.7327438132196704
+[eo] y_1_s_0: 400.0, yhat_1_y_1_s_0: 376.0, y_1_s_1: 174.0, yhat_1_y_1_s_1: 165.0
+[eo] result: 0.9912727272727272
+env0_in_acc   env0_out_acc  env1_in_acc   env1_out_acc  epoch         loss          penalty       step          step_time    
+0.9748931624  0.9786324786  0.9958115183  0.9818435754  8.5470085470  0.0436756521  0.0000000000  500           0.3197970290 
+env0_in_md    env0_out_md   env1_in_md    env1_out_md   epoch         loss          penalty       step          step_time    
+0.1013030112  0.0887525976  0.0370819569  0.0304878354  8.5470085470  0.0436756521  0.0000000000  500           0.3197970290 
+env0_in_dp    env0_out_dp   env1_in_dp    env1_out_dp   epoch         loss          penalty       step          step_time    
+0.7327438132  0.7350828324  0.9331158929  0.9390587804  8.5470085470  0.0436756521  0.0000000000  500           0.3197970290 
+env0_in_eo    env0_out_eo   env1_in_eo    env1_out_eo   epoch         loss          penalty       step          step_time    
+0.9912727273  0.9522517634  0.9976182243  0.9944095882  8.5470085470  0.0436756521  0.0000000000  500           0.3197970290 
+env0_in_auc   env0_out_auc  env1_in_auc   env1_out_auc  epoch         loss          penalty       step          step_time    
+0.5690699111  0.5540875521  0.5331745568  0.5019685039  8.5470085470  0.0436756521  0.0000000000  500           0.3197970290 
+
+Processing 5921 total samples across 2 environments
+Predictions saved to grid_search_results/IGA_lr_5e-05_bs_32_wd_0.0/step_500_predictions.json
+Total predictions: 5921
+Prediction summary saved to grid_search_results/IGA_lr_5e-05_bs_32_wd_0.0/step_500_predictions_summary.json
+[md] y_1_s_0: 469.60107421875, y_1_s_1: 185.96572875976562, s_0: 1429.0, s_1: 443.0
+[md] result: 0.09116503596305847
+[dp] s_0: 1429, y_1_s_0: 467.0, s_1: 443, y_1_s_1: 185.0
+[dp] result: 0.7825582055113195
+[eo] y_1_s_0: 400.0, yhat_1_y_1_s_0: 399.0, y_1_s_1: 174.0, yhat_1_y_1_s_1: 173.0
+[eo] result: 1.0032658959537573
+env0_in_acc   env0_out_acc  env1_in_acc   env1_out_acc  epoch         loss          penalty       step          step_time    
+0.9561965812  0.9636752137  1.0000000000  0.9972067039  17.094017094  0.0157156022  0.0000000000  1000          0.3185658779 
+env0_in_md    env0_out_md   env1_in_md    env1_out_md   epoch         loss          penalty       step          step_time    
+0.0911650360  0.0840704143  0.0357086957  0.0295678079  17.094017094  0.0157156022  0.0000000000  1000          0.3185658779 
+env0_in_dp    env0_out_dp   env1_in_dp    env1_out_dp   epoch         loss          penalty       step          step_time    
+0.7825582055  0.8024273776  0.9298122431  0.9377427822  17.094017094  0.0157156022  0.0000000000  1000          0.3185658779 
+env0_in_eo    env0_out_eo   env1_in_eo    env1_out_eo   epoch         loss          penalty       step          step_time    
+0.9967447354  1.0000000000  1.0000000000  1.0000000000  17.094017094  0.0157156022  0.0000000000  1000          0.3185658779 
+env0_in_auc   env0_out_auc  env1_in_auc   env1_out_auc  epoch         loss          penalty       step          step_time    
+0.5503367049  0.5365822494  0.5051381009  0.5258121144  17.094017094  0.0157156022  0.0000000000  1000          0.3185658779 
+
+Processing 5921 total samples across 2 environments
+Predictions saved to grid_search_results/IGA_lr_5e-05_bs_32_wd_0.0/step_1000_predictions.json
+Total predictions: 5921
+Prediction summary saved to grid_search_results/IGA_lr_5e-05_bs_32_wd_0.0/step_1000_predictions_summary.json
+[md] y_1_s_0: 438.72601318359375, y_1_s_1: 181.42234802246094, s_0: 1429.0, s_1: 443.0
+[md] result: 0.10251516103744507
+[dp] s_0: 1429, y_1_s_0: 438.0, s_1: 443, y_1_s_1: 181.0
+[dp] result: 0.7501826800026291
+[eo] y_1_s_0: 400.0, yhat_1_y_1_s_0: 400.0, y_1_s_1: 174.0, yhat_1_y_1_s_1: 174.0
+[eo] result: 1.0
+env0_in_acc   env0_out_acc  env1_in_acc   env1_out_acc  epoch         loss          penalty       step          step_time    
+0.9759615385  0.9850427350  0.9968586387  0.9958100559  25.641025641  0.0084827908  0.0000000000  1500          0.3183395987 
+env0_in_md    env0_out_md   env1_in_md    env1_out_md   epoch         loss          penalty       step          step_time    
+0.1025151610  0.0664414465  0.0363465250  0.0310899019  25.641025641  0.0084827908  0.0000000000  1500          0.3183395987 
+env0_in_dp    env0_out_dp   env1_in_dp    env1_out_dp   epoch         loss          penalty       step          step_time    
+0.7501826800  0.8096564531  0.9282789717  0.9335934778  25.641025641  0.0084827908  0.0000000000  1500          0.3183395987 
+env0_in_eo    env0_out_eo   env1_in_eo    env1_out_eo   epoch         loss          penalty       step          step_time    
+1.0000000000  1.0000000000  1.0000000000  1.0000000000  25.641025641  0.0084827908  0.0000000000  1500          0.3183395987 
+env0_in_auc   env0_out_auc  env1_in_auc   env1_out_auc  epoch         loss          penalty       step          step_time    
+0.5853562216  0.5791571900  0.5389063635  0.5687442479  25.641025641  0.0084827908  0.0000000000  1500          0.3183395987 
+
+Processing 5921 total samples across 2 environments
+Predictions saved to grid_search_results/IGA_lr_5e-05_bs_32_wd_0.0/step_1500_predictions.json
+Total predictions: 5921
+Prediction summary saved to grid_search_results/IGA_lr_5e-05_bs_32_wd_0.0/step_1500_predictions_summary.json
+[md] y_1_s_0: 429.9149169921875, y_1_s_1: 176.9392852783203, s_0: 1429.0, s_1: 443.0
+[md] result: 0.09856128692626953
+[dp] s_0: 1429, y_1_s_0: 429.0, s_1: 443, y_1_s_1: 178.0
+[dp] result: 0.7471516971874729
+[eo] y_1_s_0: 400.0, yhat_1_y_1_s_0: 398.0, y_1_s_1: 174.0, yhat_1_y_1_s_1: 174.0
+[eo] result: 0.995
+env0_in_acc   env0_out_acc  env1_in_acc   env1_out_acc  epoch         loss          penalty       step          step_time    
+0.9802350427  0.9807692308  1.0000000000  1.0000000000  34.188034188  0.0083979040  0.0000000000  2000          0.3184159861 
+env0_in_md    env0_out_md   env1_in_md    env1_out_md   epoch         loss          penalty       step          step_time    
+0.0985612869  0.0807710886  0.0360309780  0.0320611298  34.188034188  0.0083979040  0.0000000000  2000          0.3184159861 
+env0_in_dp    env0_out_dp   env1_in_dp    env1_out_dp   epoch         loss          penalty       step          step_time    
+0.7471516972  0.7818245125  0.9298122431  0.9338090551  34.188034188  0.0083979040  0.0000000000  2000          0.3184159861 
+env0_in_eo    env0_out_eo   env1_in_eo    env1_out_eo   epoch         loss          penalty       step          step_time    
+0.9950000000  0.9896907216  1.0000000000  1.0000000000  34.188034188  0.0083979040  0.0000000000  2000          0.3184159861 
+env0_in_auc   env0_out_auc  env1_in_auc   env1_out_auc  epoch         loss          penalty       step          step_time    
+0.5772083273  0.5554930873  0.5495977919  0.5714030064  34.188034188  0.0083979040  0.0000000000  2000          0.3184159861 
+
+Processing 5921 total samples across 2 environments
+Predictions saved to grid_search_results/IGA_lr_5e-05_bs_32_wd_0.0/step_2000_predictions.json
+Total predictions: 5921
+Prediction summary saved to grid_search_results/IGA_lr_5e-05_bs_32_wd_0.0/step_2000_predictions_summary.json
+[md] y_1_s_0: 429.8092956542969, y_1_s_1: 177.16734313964844, s_0: 1429.0, s_1: 443.0
+[md] result: 0.09915000200271606
+[dp] s_0: 1429, y_1_s_0: 429.0, s_1: 443, y_1_s_1: 178.0
+[dp] result: 0.7471516971874729
+[eo] y_1_s_0: 400.0, yhat_1_y_1_s_0: 398.0, y_1_s_1: 174.0, yhat_1_y_1_s_1: 174.0
+[eo] result: 0.995
+env0_in_acc   env0_out_acc  env1_in_acc   env1_out_acc  epoch         loss          penalty       step          step_time    
+0.9802350427  0.9807692308  1.0000000000  1.0000000000  42.735042735  0.0000144656  0.0000000000  2500          0.3190057855 
+env0_in_md    env0_out_md   env1_in_md    env1_out_md   epoch         loss          penalty       step          step_time    
+0.0991500020  0.0803632140  0.0360028446  0.0320926905  42.735042735  0.0000144656  0.0000000000  2500          0.3190057855 
+env0_in_dp    env0_out_dp   env1_in_dp    env1_out_dp   epoch         loss          penalty       step          step_time    
+0.7471516972  0.7818245125  0.9298122431  0.9338090551  42.735042735  0.0000144656  0.0000000000  2500          0.3190057855 
+env0_in_eo    env0_out_eo   env1_in_eo    env1_out_eo   epoch         loss          penalty       step          step_time    
+0.9950000000  0.9896907216  1.0000000000  1.0000000000  42.735042735  0.0000144656  0.0000000000  2500          0.3190057855 
+env0_in_auc   env0_out_auc  env1_in_auc   env1_out_auc  epoch         loss          penalty       step          step_time    
+0.5867178898  0.5642074059  0.5706551866  0.5895711900  42.735042735  0.0000144656  0.0000000000  2500          0.3190057855 
+
+Processing 5921 total samples across 2 environments
+Predictions saved to grid_search_results/IGA_lr_5e-05_bs_32_wd_0.0/step_2500_predictions.json
+Total predictions: 5921
+Prediction summary saved to grid_search_results/IGA_lr_5e-05_bs_32_wd_0.0/step_2500_predictions_summary.json
+[md] y_1_s_0: 430.9772644042969, y_1_s_1: 177.80422973632812, s_0: 1429.0, s_1: 443.0
+[md] result: 0.09977033734321594
+[dp] s_0: 1429, y_1_s_0: 431.0, s_1: 443, y_1_s_1: 179.0
+[dp] result: 0.7464414306992819
+[eo] y_1_s_0: 400.0, yhat_1_y_1_s_0: 398.0, y_1_s_1: 174.0, yhat_1_y_1_s_1: 174.0
+[eo] result: 0.995
+env0_in_acc   env0_out_acc  env1_in_acc   env1_out_acc  epoch         loss          penalty       step          step_time    
+0.9786324786  0.9807692308  1.0000000000  1.0000000000  51.282051282  0.0000042142  0.0000000000  3000          0.3193193564 
+env0_in_md    env0_out_md   env1_in_md    env1_out_md   epoch         loss          penalty       step          step_time    
+0.0997703373  0.0797746480  0.0359990895  0.0320090652  51.282051282  0.0000042142  0.0000000000  3000          0.3193193564 
+env0_in_dp    env0_out_dp   env1_in_dp    env1_out_dp   epoch         loss          penalty       step          step_time    
+0.7464414307  0.7818245125  0.9298122431  0.9338090551  51.282051282  0.0000042142  0.0000000000  3000          0.3193193564 
+env0_in_eo    env0_out_eo   env1_in_eo    env1_out_eo   epoch         loss          penalty       step          step_time    
+0.9950000000  0.9896907216  1.0000000000  1.0000000000  51.282051282  0.0000042142  0.0000000000  3000          0.3193193564 
+env0_in_auc   env0_out_auc  env1_in_auc   env1_out_auc  epoch         loss          penalty       step          step_time    
+0.5939622177  0.5696506606  0.5787402939  0.5962606947  51.282051282  0.0000042142  0.0000000000  3000          0.3193193564 
+
+Processing 5921 total samples across 2 environments
+Predictions saved to grid_search_results/IGA_lr_5e-05_bs_32_wd_0.0/step_3000_predictions.json
+Total predictions: 5921
+Prediction summary saved to grid_search_results/IGA_lr_5e-05_bs_32_wd_0.0/step_3000_predictions_summary.json
+[md] y_1_s_0: 430.3907165527344, y_1_s_1: 177.60845947265625, s_0: 1429.0, s_1: 443.0
+[md] result: 0.09973889589309692
+[dp] s_0: 1429, y_1_s_0: 430.0, s_1: 443, y_1_s_1: 179.0
+[dp] result: 0.7447095480294459
+[eo] y_1_s_0: 400.0, yhat_1_y_1_s_0: 398.0, y_1_s_1: 174.0, yhat_1_y_1_s_1: 174.0
+[eo] result: 0.995
+env0_in_acc   env0_out_acc  env1_in_acc   env1_out_acc  epoch         loss          penalty       step          step_time    
+0.9791666667  0.9807692308  1.0000000000  1.0000000000  59.829059829  0.0000019555  0.0000000000  3500          0.3194258790 
+env0_in_md    env0_out_md   env1_in_md    env1_out_md   epoch         loss          penalty       step          step_time    
+0.0997388959  0.0798447430  0.0359981656  0.0320432186  59.829059829  0.0000019555  0.0000000000  3500          0.3194258790 
+env0_in_dp    env0_out_dp   env1_in_dp    env1_out_dp   epoch         loss          penalty       step          step_time    
+0.7447095480  0.7818245125  0.9298122431  0.9338090551  59.829059829  0.0000019555  0.0000000000  3500          0.3194258790 
+env0_in_eo    env0_out_eo   env1_in_eo    env1_out_eo   epoch         loss          penalty       step          step_time    
+0.9950000000  0.9896907216  1.0000000000  1.0000000000  59.829059829  0.0000019555  0.0000000000  3500          0.3194258790 
+env0_in_auc   env0_out_auc  env1_in_auc   env1_out_auc  epoch         loss          penalty       step          step_time    
+0.5954423605  0.5695995502  0.5819817909  0.5987660633  59.829059829  0.0000019555  0.0000000000  3500          0.3194258790 
+
+Processing 5921 total samples across 2 environments
+Predictions saved to grid_search_results/IGA_lr_5e-05_bs_32_wd_0.0/step_3500_predictions.json
+Total predictions: 5921
+Prediction summary saved to grid_search_results/IGA_lr_5e-05_bs_32_wd_0.0/step_3500_predictions_summary.json
+[md] y_1_s_0: 430.67889404296875, y_1_s_1: 177.76307678222656, s_0: 1429.0, s_1: 443.0
+[md] result: 0.09988623857498169
+[dp] s_0: 1429, y_1_s_0: 431.0, s_1: 443, y_1_s_1: 179.0
+[dp] result: 0.7464414306992819
+[eo] y_1_s_0: 400.0, yhat_1_y_1_s_0: 398.0, y_1_s_1: 174.0, yhat_1_y_1_s_1: 174.0
+[eo] result: 0.995
+env0_in_acc   env0_out_acc  env1_in_acc   env1_out_acc  epoch         loss          penalty       step          step_time    
+0.9786324786  0.9807692308  1.0000000000  1.0000000000  68.376068376  0.0000011337  0.0000000000  4000          0.3244851599 
+env0_in_md    env0_out_md   env1_in_md    env1_out_md   epoch         loss          penalty       step          step_time    
+0.0998862386  0.0796403587  0.0359976888  0.0320199430  68.376068376  0.0000011337  0.0000000000  4000          0.3244851599 
+env0_in_dp    env0_out_dp   env1_in_dp    env1_out_dp   epoch         loss          penalty       step          step_time    
+0.7464414307  0.7818245125  0.9298122431  0.9338090551  68.376068376  0.0000011337  0.0000000000  4000          0.3244851599 
+env0_in_eo    env0_out_eo   env1_in_eo    env1_out_eo   epoch         loss          penalty       step          step_time    
+0.9950000000  0.9896907216  1.0000000000  1.0000000000  68.376068376  0.0000011337  0.0000000000  4000          0.3244851599 
+env0_in_auc   env0_out_auc  env1_in_auc   env1_out_auc  epoch         loss          penalty       step          step_time    
+0.5980219478  0.5715672996  0.5845209199  0.6012629103  68.376068376  0.0000011337  0.0000000000  4000          0.3244851599 
+
+Processing 5921 total samples across 2 environments
+Predictions saved to grid_search_results/IGA_lr_5e-05_bs_32_wd_0.0/step_4000_predictions.json
+Total predictions: 5921
+Prediction summary saved to grid_search_results/IGA_lr_5e-05_bs_32_wd_0.0/step_4000_predictions_summary.json
+[md] y_1_s_0: 430.84722900390625, y_1_s_1: 177.8627166748047, s_0: 1429.0, s_1: 443.0
+[md] result: 0.09999334812164307
+[dp] s_0: 1429, y_1_s_0: 431.0, s_1: 443, y_1_s_1: 179.0
+[dp] result: 0.7464414306992819
+[eo] y_1_s_0: 400.0, yhat_1_y_1_s_0: 398.0, y_1_s_1: 174.0, yhat_1_y_1_s_1: 174.0
+[eo] result: 0.995
+env0_in_acc   env0_out_acc  env1_in_acc   env1_out_acc  epoch         loss          penalty       step          step_time    
+0.9786324786  0.9807692308  1.0000000000  1.0000000000  76.923076923  0.0000008923  0.0000000000  4500          0.3197492337 
+env0_in_md    env0_out_md   env1_in_md    env1_out_md   epoch         loss          penalty       step          step_time    
+0.0999933481  0.0794819295  0.0359974205  0.0319931805  76.923076923  0.0000008923  0.0000000000  4500          0.3197492337 
+env0_in_dp    env0_out_dp   env1_in_dp    env1_out_dp   epoch         loss          penalty       step          step_time    
+0.7464414307  0.7818245125  0.9298122431  0.9338090551  76.923076923  0.0000008923  0.0000000000  4500          0.3197492337 
+env0_in_eo    env0_out_eo   env1_in_eo    env1_out_eo   epoch         loss          penalty       step          step_time    
+0.9950000000  0.9896907216  1.0000000000  1.0000000000  76.923076923  0.0000008923  0.0000000000  4500          0.3197492337 
+env0_in_auc   env0_out_auc  env1_in_auc   env1_out_auc  epoch         loss          penalty       step          step_time    
+0.5995810738  0.5729983900  0.5868453488  0.6038279306  76.923076923  0.0000008923  0.0000000000  4500          0.3197492337 
+
+Processing 5921 total samples across 2 environments
+Predictions saved to grid_search_results/IGA_lr_5e-05_bs_32_wd_0.0/step_4500_predictions.json
+Total predictions: 5921
+Prediction summary saved to grid_search_results/IGA_lr_5e-05_bs_32_wd_0.0/step_4500_predictions_summary.json
+[md] y_1_s_0: 431.1274108886719, y_1_s_1: 177.99009704589844, s_0: 1429.0, s_1: 443.0
+[md] result: 0.10008484125137329
+[dp] s_0: 1429, y_1_s_0: 431.0, s_1: 443, y_1_s_1: 179.0
+[dp] result: 0.7464414306992819
+[eo] y_1_s_0: 400.0, yhat_1_y_1_s_0: 398.0, y_1_s_1: 174.0, yhat_1_y_1_s_1: 174.0
+[eo] result: 0.995
+env0_in_acc   env0_out_acc  env1_in_acc   env1_out_acc  epoch         loss          penalty       step          step_time    
+0.9786324786  0.9807692308  1.0000000000  1.0000000000  85.470085470  0.0000003744  0.0000000000  5000          0.3192506256 
+env0_in_md    env0_out_md   env1_in_md    env1_out_md   epoch         loss          penalty       step          step_time    
+0.1000848413  0.0793640614  0.0359973609  0.0319772065  85.470085470  0.0000003744  0.0000000000  5000          0.3192506256 
+env0_in_dp    env0_out_dp   env1_in_dp    env1_out_dp   epoch         loss          penalty       step          step_time    
+0.7464414307  0.7818245125  0.9298122431  0.9338090551  85.470085470  0.0000003744  0.0000000000  5000          0.3192506256 
+env0_in_eo    env0_out_eo   env1_in_eo    env1_out_eo   epoch         loss          penalty       step          step_time    
+0.9950000000  0.9896907216  1.0000000000  1.0000000000  85.470085470  0.0000003744  0.0000000000  5000          0.3192506256 
+env0_in_auc   env0_out_auc  env1_in_auc   env1_out_auc  epoch         loss          penalty       step          step_time    
+0.6007152707  0.5730495004  0.5881178005  0.6056430446  85.470085470  0.0000003744  0.0000000000  5000          0.3192506256 
+
+Processing 5921 total samples across 2 environments
+Predictions saved to grid_search_results/IGA_lr_5e-05_bs_32_wd_0.0/step_5000_predictions.json
+Total predictions: 5921
+Prediction summary saved to grid_search_results/IGA_lr_5e-05_bs_32_wd_0.0/step_5000_predictions_summary.json
+[md] y_1_s_0: 430.9028625488281, y_1_s_1: 177.92713928222656, s_0: 1429.0, s_1: 443.0
+[md] result: 0.10009986162185669
+[dp] s_0: 1429, y_1_s_0: 431.0, s_1: 443, y_1_s_1: 179.0
+[dp] result: 0.7464414306992819
+[eo] y_1_s_0: 400.0, yhat_1_y_1_s_0: 398.0, y_1_s_1: 174.0, yhat_1_y_1_s_1: 174.0
+[eo] result: 0.995
+env0_in_acc   env0_out_acc  env1_in_acc   env1_out_acc  epoch         loss          penalty       step          step_time    
+0.9786324786  0.9807692308  1.0000000000  1.0000000000  94.017094017  0.0000003447  0.0000000000  5500          0.3191417537 
+env0_in_md    env0_out_md   env1_in_md    env1_out_md   epoch         loss          penalty       step          step_time    
+0.1000998616  0.0793842673  0.0359973609  0.0319915414  94.017094017  0.0000003447  0.0000000000  5500          0.3191417537 
+env0_in_dp    env0_out_dp   env1_in_dp    env1_out_dp   epoch         loss          penalty       step          step_time    
+0.7464414307  0.7818245125  0.9298122431  0.9338090551  94.017094017  0.0000003447  0.0000000000  5500          0.3191417537 
+env0_in_eo    env0_out_eo   env1_in_eo    env1_out_eo   epoch         loss          penalty       step          step_time    
+0.9950000000  0.9896907216  1.0000000000  1.0000000000  94.017094017  0.0000003447  0.0000000000  5500          0.3191417537 
+env0_in_auc   env0_out_auc  env1_in_auc   env1_out_auc  epoch         loss          penalty       step          step_time    
+0.6011733726  0.5727939485  0.5899466872  0.6064781675  94.017094017  0.0000003447  0.0000000000  5500          0.3191417537 
+
+Processing 5921 total samples across 2 environments
+Predictions saved to grid_search_results/IGA_lr_5e-05_bs_32_wd_0.0/step_5500_predictions.json
+Total predictions: 5921
+Prediction summary saved to grid_search_results/IGA_lr_5e-05_bs_32_wd_0.0/step_5500_predictions_summary.json
+[md] y_1_s_0: 430.9827880859375, y_1_s_1: 177.97732543945312, s_0: 1429.0, s_1: 443.0
+[md] result: 0.10015720129013062
+[dp] s_0: 1429, y_1_s_0: 431.0, s_1: 443, y_1_s_1: 179.0
+[dp] result: 0.7464414306992819
+[eo] y_1_s_0: 400.0, yhat_1_y_1_s_0: 398.0, y_1_s_1: 174.0, yhat_1_y_1_s_1: 174.0
+[eo] result: 0.995
+env0_in_acc   env0_out_acc  env1_in_acc   env1_out_acc  epoch         loss          penalty       step          step_time    
+0.9786324786  0.9807692308  1.0000000000  1.0000000000  102.56410256  0.0000002108  0.0000000000  6000          0.3192202649 
+env0_in_md    env0_out_md   env1_in_md    env1_out_md   epoch         loss          penalty       step          step_time    
+0.1001572013  0.0792908669  0.0359972417  0.0319772661  102.56410256  0.0000002108  0.0000000000  6000          0.3192202649 
+env0_in_dp    env0_out_dp   env1_in_dp    env1_out_dp   epoch         loss          penalty       step          step_time    
+0.7464414307  0.7818245125  0.9298122431  0.9338090551  102.56410256  0.0000002108  0.0000000000  6000          0.3192202649 
+env0_in_eo    env0_out_eo   env1_in_eo    env1_out_eo   epoch         loss          penalty       step          step_time    
+0.9950000000  0.9896907216  1.0000000000  1.0000000000  102.56410256  0.0000002108  0.0000000000  6000          0.3192202649 
+env0_in_auc   env0_out_auc  env1_in_auc   env1_out_auc  epoch         loss          penalty       step          step_time    
+0.6012365591  0.5725128415  0.5909571944  0.6081824999  102.56410256  0.0000002108  0.0000000000  6000          0.3192202649 
+
+Processing 5921 total samples across 2 environments
+Predictions saved to grid_search_results/IGA_lr_5e-05_bs_32_wd_0.0/step_6000_predictions.json
+Total predictions: 5921
+Prediction summary saved to grid_search_results/IGA_lr_5e-05_bs_32_wd_0.0/step_6000_predictions_summary.json
+[md] y_1_s_0: 430.9336853027344, y_1_s_1: 177.97251892089844, s_0: 1429.0, s_1: 443.0
+[md] result: 0.1001807153224945
+[dp] s_0: 1429, y_1_s_0: 431.0, s_1: 443, y_1_s_1: 179.0
+[dp] result: 0.7464414306992819
+[eo] y_1_s_0: 400.0, yhat_1_y_1_s_0: 398.0, y_1_s_1: 174.0, yhat_1_y_1_s_1: 174.0
+[eo] result: 0.995
+env0_in_acc   env0_out_acc  env1_in_acc   env1_out_acc  epoch         loss          penalty       step          step_time    
+0.9786324786  0.9807692308  1.0000000000  1.0000000000  111.11111111  0.0000001478  0.0000000000  6500          0.3192113757 
+env0_in_md    env0_out_md   env1_in_md    env1_out_md   epoch         loss          penalty       step          step_time    
+0.1001807153  0.0792491138  0.0359971821  0.0319709480  111.11111111  0.0000001478  0.0000000000  6500          0.3192113757 
+env0_in_dp    env0_out_dp   env1_in_dp    env1_out_dp   epoch         loss          penalty       step          step_time    
+0.7464414307  0.7818245125  0.9298122431  0.9338090551  111.11111111  0.0000001478  0.0000000000  6500          0.3192113757 
+env0_in_eo    env0_out_eo   env1_in_eo    env1_out_eo   epoch         loss          penalty       step          step_time    
+0.9950000000  0.9896907216  1.0000000000  1.0000000000  111.11111111  0.0000001478  0.0000000000  6500          0.3192113757 
+env0_in_auc   env0_out_auc  env1_in_auc   env1_out_auc  epoch         loss          penalty       step          step_time    
+0.6023849730  0.5724106207  0.5911435477  0.6109009101  111.11111111  0.0000001478  0.0000000000  6500          0.3192113757 
+
+Processing 5921 total samples across 2 environments
+Predictions saved to grid_search_results/IGA_lr_5e-05_bs_32_wd_0.0/step_6500_predictions.json
+Total predictions: 5921
+Prediction summary saved to grid_search_results/IGA_lr_5e-05_bs_32_wd_0.0/step_6500_predictions_summary.json
+[md] y_1_s_0: 431.2025146484375, y_1_s_1: 178.0880584716797, s_0: 1429.0, s_1: 443.0
+[md] result: 0.10025343298912048
+[dp] s_0: 1429, y_1_s_0: 431.0, s_1: 443, y_1_s_1: 179.0
+[dp] result: 0.7464414306992819
+[eo] y_1_s_0: 400.0, yhat_1_y_1_s_0: 398.0, y_1_s_1: 174.0, yhat_1_y_1_s_1: 174.0
+[eo] result: 0.995
+env0_in_acc   env0_out_acc  env1_in_acc   env1_out_acc  epoch         loss          penalty       step          step_time    
+0.9786324786  0.9807692308  1.0000000000  1.0000000000  119.65811965  0.0000000899  0.0000000000  7000          0.3197232070 
+env0_in_md    env0_out_md   env1_in_md    env1_out_md   epoch         loss          penalty       step          step_time    
+0.1002534330  0.0791091621  0.0359971821  0.0319441259  119.65811965  0.0000000899  0.0000000000  7000          0.3197232070 
+env0_in_dp    env0_out_dp   env1_in_dp    env1_out_dp   epoch         loss          penalty       step          step_time    
+0.7464414307  0.7818245125  0.9298122431  0.9338090551  119.65811965  0.0000000899  0.0000000000  7000          0.3197232070 
+env0_in_eo    env0_out_eo   env1_in_eo    env1_out_eo   epoch         loss          penalty       step          step_time    
+0.9950000000  0.9896907216  1.0000000000  1.0000000000  119.65811965  0.0000000899  0.0000000000  7000          0.3197232070 
+env0_in_auc   env0_out_auc  env1_in_auc   env1_out_auc  epoch         loss          penalty       step          step_time    
+0.6029678681  0.5723595104  0.5919299060  0.6118979446  119.65811965  0.0000000899  0.0000000000  7000          0.3197232070 
+
+Processing 5921 total samples across 2 environments
+Predictions saved to grid_search_results/IGA_lr_5e-05_bs_32_wd_0.0/step_7000_predictions.json
+Total predictions: 5921
+Prediction summary saved to grid_search_results/IGA_lr_5e-05_bs_32_wd_0.0/step_7000_predictions_summary.json
+[md] y_1_s_0: 431.17059326171875, y_1_s_1: 178.0944366455078, s_0: 1429.0, s_1: 443.0
+[md] result: 0.10029014945030212
+[dp] s_0: 1429, y_1_s_0: 431.0, s_1: 443, y_1_s_1: 179.0
+[dp] result: 0.7464414306992819
+[eo] y_1_s_0: 400.0, yhat_1_y_1_s_0: 398.0, y_1_s_1: 174.0, yhat_1_y_1_s_1: 174.0
+[eo] result: 0.995
+env0_in_acc   env0_out_acc  env1_in_acc   env1_out_acc  epoch         loss          penalty       step          step_time    
+0.9786324786  0.9807692308  1.0000000000  1.0000000000  128.20512820  0.0000000721  0.0000000000  7500          0.3195675068 
+env0_in_md    env0_out_md   env1_in_md    env1_out_md   epoch         loss          penalty       step          step_time    
+0.1002901495  0.0790786147  0.0359971821  0.0319392383  128.20512820  0.0000000721  0.0000000000  7500          0.3195675068 
+env0_in_dp    env0_out_dp   env1_in_dp    env1_out_dp   epoch         loss          penalty       step          step_time    
+0.7464414307  0.7818245125  0.9298122431  0.9338090551  128.20512820  0.0000000721  0.0000000000  7500          0.3195675068 
+env0_in_eo    env0_out_eo   env1_in_eo    env1_out_eo   epoch         loss          penalty       step          step_time    
+0.9950000000  0.9896907216  1.0000000000  1.0000000000  128.20512820  0.0000000721  0.0000000000  7500          0.3195675068 
+env0_in_auc   env0_out_auc  env1_in_auc   env1_out_auc  epoch         loss          penalty       step          step_time    
+0.6040483566  0.5721806241  0.5918642886  0.6138664485  128.20512820  0.0000000721  0.0000000000  7500          0.3195675068 
+
+Processing 5921 total samples across 2 environments
+Predictions saved to grid_search_results/IGA_lr_5e-05_bs_32_wd_0.0/step_7500_predictions.json
+Total predictions: 5921
+Prediction summary saved to grid_search_results/IGA_lr_5e-05_bs_32_wd_0.0/step_7500_predictions_summary.json
+[md] y_1_s_0: 431.2655334472656, y_1_s_1: 178.14508056640625, s_0: 1429.0, s_1: 443.0
+[md] result: 0.10033804178237915
+[dp] s_0: 1429, y_1_s_0: 431.0, s_1: 443, y_1_s_1: 179.0
+[dp] result: 0.7464414306992819
+[eo] y_1_s_0: 400.0, yhat_1_y_1_s_0: 398.0, y_1_s_1: 174.0, yhat_1_y_1_s_1: 174.0
+[eo] result: 0.995
+env0_in_acc   env0_out_acc  env1_in_acc   env1_out_acc  epoch         loss          penalty       step          step_time    
+0.9786324786  0.9807692308  1.0000000000  1.0000000000  136.75213675  0.0000000541  0.0000000000  8000          0.3194056468 
+env0_in_md    env0_out_md   env1_in_md    env1_out_md   epoch         loss          penalty       step          step_time    
+0.1003380418  0.0789958835  0.0359971821  0.0319252610  136.75213675  0.0000000541  0.0000000000  8000          0.3194056468 
+env0_in_dp    env0_out_dp   env1_in_dp    env1_out_dp   epoch         loss          penalty       step          step_time    
+0.7464414307  0.7818245125  0.9298122431  0.9338090551  136.75213675  0.0000000541  0.0000000000  8000          0.3194056468 
+env0_in_eo    env0_out_eo   env1_in_eo    env1_out_eo   epoch         loss          penalty       step          step_time    
+0.9950000000  0.9896907216  1.0000000000  1.0000000000  136.75213675  0.0000000541  0.0000000000  8000          0.3194056468 
+env0_in_auc   env0_out_auc  env1_in_auc   env1_out_auc  epoch         loss          penalty       step          step_time    
+0.6051272654  0.5763461194  0.5926543215  0.6147867880  136.75213675  0.0000000541  0.0000000000  8000          0.3194056468 
+
+Processing 5921 total samples across 2 environments
+Predictions saved to grid_search_results/IGA_lr_5e-05_bs_32_wd_0.0/step_8000_predictions.json
+Total predictions: 5921
+Prediction summary saved to grid_search_results/IGA_lr_5e-05_bs_32_wd_0.0/step_8000_predictions_summary.json

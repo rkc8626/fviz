@@ -1,0 +1,390 @@
+Environment:
+	Python: 3.8.15
+	PyTorch: 2.4.1+cu121
+	Torchvision: 0.19.1+cu121
+	CUDA: 12.1
+	CUDNN: 90100
+	NumPy: 1.23.5
+	PIL: 9.4.0
+Args:
+	algorithm: MBDG
+	checkpoint_freq: None
+	data_dir: /home/chenz1/toorange/Data
+	dataset: BDDPerson
+	holdout_fraction: 0.2
+	hparams: None
+	hparams_seed: 0
+	output_dir: ./results_tsne
+	save_model_every_checkpoint: False
+	save_predictions_every_checkpoint: True
+	seed: 0
+	skip_model_save: False
+	step: 2
+	steps: None
+	task: domain_generalization
+	test_envs: [0]
+	trial_seed: 0
+	uda_holdout_fraction: 0
+HParams:
+	batch_size: 22
+	class_balanced: False
+	data_augmentation: True
+	lr: 5e-05
+	mbdg_config_path: /home/chenz1/toorange/FDDG/fddg/domainbed/munit/saved_models/BDDPerson/config.yaml
+	mbdg_dual_step_size: 0.05
+	mbdg_fair_step_size: 0.05
+	mbdg_gamma1: 0.025
+	mbdg_gamma2: 0.025
+	mbdg_model_path1: /home/chenz1/toorange/FDDG/fddg/domainbed/munit/saved_models/BDDPerson/0_step1.pt
+	mbdg_model_path2: /home/chenz1/toorange/FDDG/fddg/domainbed/munit/saved_models/BDDPerson/0_step2.pt
+	mbdg_model_path3: /home/chenz1/toorange/FDDG/fddg/domainbed/munit/saved_models/BDDPerson/0_cotrain_step1.pt
+	nonlinear_classifier: False
+	resnet18: False
+	resnet_dropout: 0.0
+	step: 2
+	weight_decay: 0.0
+[SensitiveImageFolder] Second element counts: 0s=3091, 1s=2830
+[SensitiveImageFolder] Second element counts: 0s=3091, 1s=2830
+
+Debugging dataset splitting:
+Dataset type: <class 'domainbed.datasets.BDDPerson'>
+Number of environments: 2
+Test environments: [0]
+Holdout fraction: 0.2
+
+Processing environment 0:
+Environment size: 2340
+Split sizes - in: 1872, out: 468
+Test env split - in: 1872, uda: 0
+
+Processing environment 1:
+Environment size: 3581
+Split sizes - in: 2865, out: 716
+
+Final split sizes:
+In splits: [1872, 2865]
+Out splits: [468, 716]
+UDA splits: []
+sensitive attribute stats:
+  Unique values: [0 1]
+  Counts: [1303 2278]
+  Mean: 0.6361
+sensitive attribute stats:
+  Unique values: [0 1]
+  Counts: [1788  552]
+  Mean: 0.2359
+sensitive attribute stats:
+  Unique values: [0 1]
+  Counts: [1429  443]
+  Mean: 0.2366
+sensitive attribute stats:
+  Unique values: [0 1]
+  Counts: [1049 1816]
+  Mean: 0.6339
+sensitive attribute stats:
+  Unique values: [0 1]
+  Counts: [359 109]
+  Mean: 0.2329
+sensitive attribute stats:
+  Unique values: [0 1]
+  Counts: [254 462]
+  Mean: 0.6453
+Hparams:  {'data_augmentation': True, 'resnet18': False, 'resnet_dropout': 0.0, 'class_balanced': False, 'nonlinear_classifier': False, 'mbdg_dual_step_size': 0.05, 'mbdg_fair_step_size': 0.05, 'mbdg_gamma1': 0.025, 'mbdg_gamma2': 0.025, 'lr': 5e-05, 'weight_decay': 0.0, 'batch_size': 22, 'step': 2, 'mbdg_model_path1': '/home/chenz1/toorange/FDDG/fddg/domainbed/munit/saved_models/BDDPerson/0_step1.pt', 'mbdg_model_path2': '/home/chenz1/toorange/FDDG/fddg/domainbed/munit/saved_models/BDDPerson/0_step2.pt', 'mbdg_model_path3': '/home/chenz1/toorange/FDDG/fddg/domainbed/munit/saved_models/BDDPerson/0_cotrain_step1.pt', 'mbdg_config_path': '/home/chenz1/toorange/FDDG/fddg/domainbed/munit/saved_models/BDDPerson/config.yaml'}
+/blue/ufdatastudios/chenz1/.conda/envs/fddg2/lib/python3.8/site-packages/torchvision/models/_utils.py:208: UserWarning: The parameter 'pretrained' is deprecated since 0.13 and may be removed in the future, please use 'weights' instead.
+  warnings.warn(
+/blue/ufdatastudios/chenz1/.conda/envs/fddg2/lib/python3.8/site-packages/torchvision/models/_utils.py:223: UserWarning: Arguments other than a weight enum or `None` for 'weights' are deprecated since 0.13 and may be removed in the future. The current behavior is equivalent to passing `weights=ResNet50_Weights.IMAGENET1K_V1`. You can also use `weights=ResNet50_Weights.DEFAULT` to get the most up-to-date weights.
+  warnings.warn(msg)
+/orange/ufdatastudios/chenz1/FDDG/fddg/domainbed/networks.py:124: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  gen.load_state_dict(torch.load(fname)[letter+'1'])
+/orange/ufdatastudios/chenz1/FDDG/fddg/domainbed/networks.py:128: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  gen.load_state_dict(torch.load(fname)[letter+'2'])
+/orange/ufdatastudios/chenz1/FDDG/fddg/domainbed/networks.py:132: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  mlp.load_state_dict(torch.load(fname)[letter])
+[md] y_1_s_0: 826.3740234375, y_1_s_1: 266.6731262207031, s_0: 1429.0, s_1: 443.0
+[md] result: 0.023682594299316406
+[dp] s_0: 1429, y_1_s_0: 1021.0, s_1: 443, y_1_s_1: 335.0
+[dp] result: 0.944827298079233
+[eo] y_1_s_0: 400.0, yhat_1_y_1_s_0: 400.0, y_1_s_1: 174.0, yhat_1_y_1_s_1: 174.0
+[eo] result: 1.0
+dual_var1     dual_var2     env0_in_acc   env0_out_acc  env1_in_acc   env1_out_acc  epoch         l_cls         l_fair        l_inv         loss          step          step_time
+0.9993096590  0.9992348552  0.5822649573  0.5897435897  0.7448516579  0.7653631285  0.0000000000  0.8440666199  0.0096976869  0.0111928880  0.8649572134  0             38.358708143
+dual_var1     dual_var2     env0_in_md    env0_out_md   env1_in_md    env1_out_md   epoch         l_cls         l_fair        l_inv         loss          step          step_time
+0.9993096590  0.9992348552  0.0236825943  0.0269740820  0.0116098523  0.0024364591  0.0000000000  0.8440666199  0.0096976869  0.0111928880  0.8649572134  0             38.358708143
+dual_var1     dual_var2     env0_in_dp    env0_out_dp   env1_in_dp    env1_out_dp   epoch         l_cls         l_fair        l_inv         loss          step          step_time
+0.9993096590  0.9992348552  0.9448272981  0.8962311642  0.9524662225  0.9902178852  0.0000000000  0.8440666199  0.0096976869  0.0111928880  0.8649572134  0             38.358708143
+dual_var1     dual_var2     env0_in_eo    env0_out_eo   env1_in_eo    env1_out_eo   epoch         l_cls         l_fair        l_inv         loss          step          step_time
+0.9993096590  0.9992348552  1.0000000000  1.0000000000  1.0000000000  1.0000000000  0.0000000000  0.8440666199  0.0096976869  0.0111928880  0.8649572134  0             38.358708143
+dual_var1     dual_var2     env0_in_auc   env0_out_auc  env1_in_auc   env1_out_auc  epoch         l_cls         l_fair        l_inv         loss          step          step_time
+0.9993096590  0.9992348552  0.5699797961  0.5709284199  0.5278842237  0.5038177046  0.0000000000  0.8440666199  0.0096976869  0.0111928880  0.8649572134  0             38.358708143
+
+[md] y_1_s_0: 537.6920776367188, y_1_s_1: 195.20346069335938, s_0: 1429.0, s_1: 443.0
+[md] result: 0.06436827778816223
+[dp] s_0: 1429, y_1_s_0: 471.0, s_1: 443, y_1_s_1: 187.0
+[dp] result: 0.7808197647657574
+[eo] y_1_s_0: 400.0, yhat_1_y_1_s_0: 389.0, y_1_s_1: 174.0, yhat_1_y_1_s_1: 171.0
+[eo] result: 0.989561403508772
+dual_var1     dual_var2     env0_in_acc   env0_out_acc  env1_in_acc   env1_out_acc  epoch         l_cls         l_fair        l_inv         loss          step          step_time
+1.3740275683  1.8320651864  0.9401709402  0.9636752137  0.9825479930  0.9888268156  5.8760683761  0.1527924685  0.0923622583  0.0487383967  0.3873385039  500           0.1944323397
+dual_var1     dual_var2     env0_in_md    env0_out_md   env1_in_md    env1_out_md   epoch         l_cls         l_fair        l_inv         loss          step          step_time
+1.3740275683  1.8320651864  0.0643682778  0.0573818088  0.0201495290  0.0323665440  5.8760683761  0.1527924685  0.0923622583  0.0487383967  0.3873385039  500           0.1944323397
+dual_var1     dual_var2     env0_in_dp    env0_out_dp   env1_in_dp    env1_out_dp   epoch         l_cls         l_fair        l_inv         loss          step          step_time
+1.3740275683  1.8320651864  0.7808197648  0.7625834035  0.9377324218  0.9298400480  5.8760683761  0.1527924685  0.0923622583  0.0487383967  0.3873385039  500           0.1944323397
+dual_var1     dual_var2     env0_in_eo    env0_out_eo   env1_in_eo    env1_out_eo   epoch         l_cls         l_fair        l_inv         loss          step          step_time
+1.3740275683  1.8320651864  0.9895614035  0.9896907216  0.9979732345  0.9959472752  5.8760683761  0.1527924685  0.0923622583  0.0487383967  0.3873385039  500           0.1944323397
+dual_var1     dual_var2     env0_in_auc   env0_out_auc  env1_in_auc   env1_out_auc  epoch         l_cls         l_fair        l_inv         loss          step          step_time
+1.3740275683  1.8320651864  0.5541105163  0.5380900054  0.5070053082  0.5340866483  5.8760683761  0.1527924685  0.0923622583  0.0487383967  0.3873385039  500           0.1944323397
+
+[md] y_1_s_0: 313.1894226074219, y_1_s_1: 120.26566314697266, s_0: 1429.0, s_1: 443.0
+[md] result: 0.05231320858001709
+[dp] s_0: 1429, y_1_s_0: 224.0, s_1: 443, y_1_s_1: 107.0
+[dp] result: 0.6489866124274868
+[eo] y_1_s_0: 400.0, yhat_1_y_1_s_0: 222.0, y_1_s_1: 174.0, yhat_1_y_1_s_1: 107.0
+[eo] result: 0.9025233644859815
+dual_var1     dual_var2     env0_in_acc   env0_out_acc  env1_in_acc   env1_out_acc  epoch         l_cls         l_fair        l_inv         loss          step          step_time
+1.6407373865  3.3466715722  0.8680555556  0.8931623932  0.8914485166  0.8812849162  11.752136752  0.2425650168  0.0728778686  0.0278028362  0.5287175683  1000          0.1948087115
+dual_var1     dual_var2     env0_in_md    env0_out_md   env1_in_md    env1_out_md   epoch         l_cls         l_fair        l_inv         loss          step          step_time
+1.6407373865  3.3466715722  0.0523132086  0.0587018132  0.0174558461  0.0146293044  11.752136752  0.2425650168  0.0728778686  0.0278028362  0.5287175683  1000          0.1948087115
+dual_var1     dual_var2     env0_in_dp    env0_out_dp   env1_in_dp    env1_out_dp   epoch         l_cls         l_fair        l_inv         loss          step          step_time
+1.6407373865  3.3466715722  0.6489866124  0.5778596460  0.9266929557  0.9363555887  11.752136752  0.2425650168  0.0728778686  0.0278028362  0.5287175683  1000          0.1948087115
+dual_var1     dual_var2     env0_in_eo    env0_out_eo   env1_in_eo    env1_out_eo   epoch         l_cls         l_fair        l_inv         loss          step          step_time
+1.6407373865  3.3466715722  0.9025233645  0.7392750249  0.9960612860  0.9912014407  11.752136752  0.2425650168  0.0728778686  0.0278028362  0.5287175683  1000          0.1948087115
+dual_var1     dual_var2     env0_in_auc   env0_out_auc  env1_in_auc   env1_out_auc  epoch         l_cls         l_fair        l_inv         loss          step          step_time
+1.6407373865  3.3466715722  0.5562304221  0.5426388286  0.5146247947  0.5231533558  11.752136752  0.2425650168  0.0728778686  0.0278028362  0.5287175683  1000          0.1948087115
+
+[md] y_1_s_0: 636.6461181640625, y_1_s_1: 215.73880004882812, s_0: 1429.0, s_1: 443.0
+[md] result: 0.041476428508758545
+[dp] s_0: 1429, y_1_s_0: 459.0, s_1: 443, y_1_s_1: 184.0
+[dp] result: 0.7733326741108102
+[eo] y_1_s_0: 400.0, yhat_1_y_1_s_0: 393.0, y_1_s_1: 174.0, yhat_1_y_1_s_1: 174.0
+[eo] result: 0.9825
+dual_var1     dual_var2     env0_in_acc   env0_out_acc  env1_in_acc   env1_out_acc  epoch         l_cls         l_fair        l_inv         loss          step          step_time
+1.6450988672  4.3262940626  0.9556623932  0.9764957265  0.9804537522  0.9818435754  17.628205128  0.2787583236  0.0581803147  0.0219057171  0.5654040641  1500          0.1948613291
+dual_var1     dual_var2     env0_in_md    env0_out_md   env1_in_md    env1_out_md   epoch         l_cls         l_fair        l_inv         loss          step          step_time
+1.6450988672  4.3262940626  0.0414764285  0.0370415151  0.0095151067  0.0146242380  17.628205128  0.2787583236  0.0581803147  0.0219057171  0.5654040641  1500          0.1948613291
+dual_var1     dual_var2     env0_in_dp    env0_out_dp   env1_in_dp    env1_out_dp   epoch         l_cls         l_fair        l_inv         loss          step          step_time
+1.6450988672  4.3262940626  0.7733326741  0.7970055710  0.9376236992  0.9251289709  17.628205128  0.2787583236  0.0581803147  0.0219057171  0.5654040641  1500          0.1948613291
+dual_var1     dual_var2     env0_in_eo    env0_out_eo   env1_in_eo    env1_out_eo   epoch         l_cls         l_fair        l_inv         loss          step          step_time
+1.6450988672  4.3262940626  0.9825000000  0.9896907216  0.9978806532  0.9955357143  17.628205128  0.2787583236  0.0581803147  0.0219057171  0.5654040641  1500          0.1948613291
+dual_var1     dual_var2     env0_in_auc   env0_out_auc  env1_in_auc   env1_out_auc  epoch         l_cls         l_fair        l_inv         loss          step          step_time
+1.6450988672  4.3262940626  0.5835427701  0.5796171833  0.5082693608  0.5267409756  17.628205128  0.2787583236  0.0581803147  0.0219057171  0.5654040641  1500          0.1948613291
+
+[md] y_1_s_0: 643.9195556640625, y_1_s_1: 226.3116455078125, s_0: 1429.0, s_1: 443.0
+[md] result: 0.060253024101257324
+[dp] s_0: 1429, y_1_s_0: 515.0, s_1: 443, y_1_s_1: 210.0
+[dp] result: 0.7602552567563065
+[eo] y_1_s_0: 400.0, yhat_1_y_1_s_0: 398.0, y_1_s_1: 174.0, yhat_1_y_1_s_1: 174.0
+[eo] result: 0.995
+dual_var1     dual_var2     env0_in_acc   env0_out_acc  env1_in_acc   env1_out_acc  epoch         l_cls         l_fair        l_inv         loss          step          step_time
+1.5189749513  4.9891595793  0.9172008547  0.9316239316  0.9525305410  0.9553072626  23.504273504  0.3562539252  0.0450596486  0.0184625472  0.6085721194  2000          0.1950589576
+dual_var1     dual_var2     env0_in_md    env0_out_md   env1_in_md    env1_out_md   epoch         l_cls         l_fair        l_inv         loss          step          step_time
+1.5189749513  4.9891595793  0.0602530241  0.0451431572  0.0138874650  0.0206527114  23.504273504  0.3562539252  0.0450596486  0.0184625472  0.6085721194  2000          0.1950589576
+dual_var1     dual_var2     env0_in_dp    env0_out_dp   env1_in_dp    env1_out_dp   epoch         l_cls         l_fair        l_inv         loss          step          step_time
+1.5189749513  4.9891595793  0.7602552568  0.7920552259  0.9403951978  0.9467213115  23.504273504  0.3562539252  0.0450596486  0.0184625472  0.6085721194  2000          0.1950589576
+dual_var1     dual_var2     env0_in_eo    env0_out_eo   env1_in_eo    env1_out_eo   epoch         l_cls         l_fair        l_inv         loss          step          step_time
+1.5189749513  4.9891595793  0.9950000000  0.9896907216  1.0000000000  1.0000000000  23.504273504  0.3562539252  0.0450596486  0.0184625472  0.6085721194  2000          0.1950589576
+dual_var1     dual_var2     env0_in_auc   env0_out_auc  env1_in_auc   env1_out_auc  epoch         l_cls         l_fair        l_inv         loss          step          step_time
+1.5189749513  4.9891595793  0.5829488174  0.5546753214  0.5112846092  0.5239543921  23.504273504  0.3562539252  0.0450596486  0.0184625472  0.6085721194  2000          0.1950589576
+
+[md] y_1_s_0: 572.6097412109375, y_1_s_1: 190.55648803710938, s_0: 1429.0, s_1: 443.0
+[md] result: 0.029443472623825073
+[dp] s_0: 1429, y_1_s_0: 356.0, s_1: 443, y_1_s_1: 152.0
+[dp] result: 0.7260690213988434
+[eo] y_1_s_0: 400.0, yhat_1_y_1_s_0: 344.0, y_1_s_1: 174.0, yhat_1_y_1_s_1: 152.0
+[eo] result: 0.9844736842105263
+dual_var1     dual_var2     env0_in_acc   env0_out_acc  env1_in_acc   env1_out_acc  epoch         l_cls         l_fair        l_inv         loss          step          step_time
+1.3017834504  5.3673534718  0.9519230769  0.9529914530  0.9654450262  0.9497206704  29.380341880  0.4278259302  0.0364322305  0.0147462230  0.6424663652  2500          0.1950000129
+dual_var1     dual_var2     env0_in_md    env0_out_md   env1_in_md    env1_out_md   epoch         l_cls         l_fair        l_inv         loss          step          step_time
+1.3017834504  5.3673534718  0.0294434726  0.0276512504  0.0056086779  0.0088936090  29.380341880  0.4278259302  0.0364322305  0.0147462230  0.6424663652  2500          0.1950000129
+dual_var1     dual_var2     env0_in_dp    env0_out_dp   env1_in_dp    env1_out_dp   epoch         l_cls         l_fair        l_inv         loss          step          step_time
+1.3017834504  5.3673534718  0.7260690214  0.7679829592  0.9140353719  0.9367322835  29.380341880  0.4278259302  0.0364322305  0.0147462230  0.6424663652  2500          0.1950000129
+dual_var1     dual_var2     env0_in_eo    env0_out_eo   env1_in_eo    env1_out_eo   epoch         l_cls         l_fair        l_inv         loss          step          step_time
+1.3017834504  5.3673534718  0.9844736842  0.9815039418  0.9851729369  0.9968793343  29.380341880  0.4278259302  0.0364322305  0.0147462230  0.6424663652  2500          0.1950000129
+dual_var1     dual_var2     env0_in_auc   env0_out_auc  env1_in_auc   env1_out_auc  epoch         l_cls         l_fair        l_inv         loss          step          step_time
+1.3017834504  5.3673534718  0.5741185094  0.5556975288  0.5041790377  0.5251900331  29.380341880  0.4278259302  0.0364322305  0.0147462230  0.6424663652  2500          0.1950000129
+
+[md] y_1_s_0: 506.6891174316406, y_1_s_1: 172.6321563720703, s_0: 1429.0, s_1: 443.0
+[md] result: 0.03511282801628113
+[dp] s_0: 1429, y_1_s_0: 350.0, s_1: 443, y_1_s_1: 145.0
+[dp] result: 0.7482927535532444
+[eo] y_1_s_0: 400.0, yhat_1_y_1_s_0: 349.0, y_1_s_1: 174.0, yhat_1_y_1_s_1: 145.0
+[eo] result: 1.047
+dual_var1     dual_var2     env0_in_acc   env0_out_acc  env1_in_acc   env1_out_acc  epoch         l_cls         l_fair        l_inv         loss          step          step_time
+1.0554512177  5.6147623329  0.9567307692  0.9615384615  0.9228621291  0.8952513966  35.256410256  0.4227291573  0.0347967587  0.0169659762  0.6359465598  3000          0.1948913183
+dual_var1     dual_var2     env0_in_md    env0_out_md   env1_in_md    env1_out_md   epoch         l_cls         l_fair        l_inv         loss          step          step_time
+1.0554512177  5.6147623329  0.0351128280  0.0261522233  0.0039376616  0.0129322112  35.256410256  0.4227291573  0.0347967587  0.0169659762  0.6359465598  3000          0.1948913183
+dual_var1     dual_var2     env0_in_dp    env0_out_dp   env1_in_dp    env1_out_dp   epoch         l_cls         l_fair        l_inv         loss          step          step_time
+1.0554512177  5.6147623329  0.7482927536  0.8349582173  0.9562772867  0.8488188976  35.256410256  0.4227291573  0.0347967587  0.0169659762  0.6359465598  3000          0.1948913183
+dual_var1     dual_var2     env0_in_eo    env0_out_eo   env1_in_eo    env1_out_eo   epoch         l_cls         l_fair        l_inv         loss          step          step_time
+1.0554512177  5.6147623329  0.9551098376  0.9148246390  0.9714624908  0.9089855072  35.256410256  0.4227291573  0.0347967587  0.0169659762  0.6359465598  3000          0.1948913183
+dual_var1     dual_var2     env0_in_auc   env0_out_auc  env1_in_auc   env1_out_auc  epoch         l_cls         l_fair        l_inv         loss          step          step_time
+1.0554512177  5.6147623329  0.5861981812  0.5682962357  0.5034850686  0.5322715342  35.256410256  0.4227291573  0.0347967587  0.0169659762  0.6359465598  3000          0.1948913183
+
+[md] y_1_s_0: 641.7744750976562, y_1_s_1: 216.47940063476562, s_0: 1429.0, s_1: 443.0
+[md] result: 0.03955942392349243
+[dp] s_0: 1429, y_1_s_0: 493.0, s_1: 443, y_1_s_1: 195.0
+[dp] result: 0.7837612818718487
+[eo] y_1_s_0: 400.0, yhat_1_y_1_s_0: 392.0, y_1_s_1: 174.0, yhat_1_y_1_s_1: 172.0
+[eo] result: 0.9913953488372093
+dual_var1     dual_var2     env0_in_acc   env0_out_acc  env1_in_acc   env1_out_acc  epoch         l_cls         l_fair        l_inv         loss          step          step_time
+0.8843366045  5.8556100149  0.9284188034  0.9572649573  0.9860383944  0.9916201117  41.132478632  0.4324851613  0.0327653373  0.0188197337  0.6408164210  3500          0.1951171355
+dual_var1     dual_var2     env0_in_md    env0_out_md   env1_in_md    env1_out_md   epoch         l_cls         l_fair        l_inv         loss          step          step_time
+0.8843366045  5.8556100149  0.0395594239  0.0296216905  0.0043006539  0.0145461261  41.132478632  0.4324851613  0.0327653373  0.0188197337  0.6408164210  3500          0.1951171355
+dual_var1     dual_var2     env0_in_dp    env0_out_dp   env1_in_dp    env1_out_dp   epoch         l_cls         l_fair        l_inv         loss          step          step_time
+0.8843366045  5.8556100149  0.7837612819  0.8096564531  0.9321302939  0.9298400480  41.132478632  0.4324851613  0.0327653373  0.0188197337  0.6408164210  3500          0.1951171355
+dual_var1     dual_var2     env0_in_eo    env0_out_eo   env1_in_eo    env1_out_eo   epoch         l_cls         l_fair        l_inv         loss          step          step_time
+0.8843366045  5.8556100149  0.9913953488  0.9896907216  0.9961915408  0.9952615915  41.132478632  0.4324851613  0.0327653373  0.0188197337  0.6408164210  3500          0.1951171355
+dual_var1     dual_var2     env0_in_auc   env0_out_auc  env1_in_auc   env1_out_auc  epoch         l_cls         l_fair        l_inv         loss          step          step_time
+0.8843366045  5.8556100149  0.5726541631  0.5559275255  0.5077622699  0.5260336776  41.132478632  0.4324851613  0.0327653373  0.0188197337  0.6408164210  3500          0.1951171355
+
+[md] y_1_s_0: 473.2886657714844, y_1_s_1: 157.31507873535156, s_0: 1429.0, s_1: 443.0
+[md] result: 0.023910343647003174
+[dp] s_0: 1429, y_1_s_0: 106.0, s_1: 443, y_1_s_1: 51.0
+[dp] result: 0.6443282701464071
+[eo] y_1_s_0: 400.0, yhat_1_y_1_s_0: 105.0, y_1_s_1: 174.0, yhat_1_y_1_s_1: 51.0
+[eo] result: 0.8955882352941178
+dual_var1     dual_var2     env0_in_acc   env0_out_acc  env1_in_acc   env1_out_acc  epoch         l_cls         l_fair        l_inv         loss          step          step_time
+0.8478356898  6.0374766073  0.7761752137  0.8055555556  0.7336823735  0.7360335196  47.008547008  0.4152782178  0.0317978611  0.0268354050  0.6298363593  4000          0.1951498880
+dual_var1     dual_var2     env0_in_md    env0_out_md   env1_in_md    env1_out_md   epoch         l_cls         l_fair        l_inv         loss          step          step_time
+0.8478356898  6.0374766073  0.0239103436  0.0245128572  0.0031572878  0.0078620911  47.008547008  0.4152782178  0.0317978611  0.0268354050  0.6298363593  4000          0.1951498880
+dual_var1     dual_var2     env0_in_dp    env0_out_dp   env1_in_dp    env1_out_dp   epoch         l_cls         l_fair        l_inv         loss          step          step_time
+0.8478356898  6.0374766073  0.6443282701  0.4154816009  0.9066093187  0.9938306681  47.008547008  0.4152782178  0.0317978611  0.0268354050  0.6298363593  4000          0.1951498880
+dual_var1     dual_var2     env0_in_eo    env0_out_eo   env1_in_eo    env1_out_eo   epoch         l_cls         l_fair        l_inv         loss          step          step_time
+0.8478356898  6.0374766073  0.8955882353  0.5501899078  0.8391620712  0.9396057951  47.008547008  0.4152782178  0.0317978611  0.0268354050  0.6298363593  4000          0.1951498880
+dual_var1     dual_var2     env0_in_auc   env0_out_auc  env1_in_auc   env1_out_auc  epoch         l_cls         l_fair        l_inv         loss          step          step_time
+0.8478356898  6.0374766073  0.5628507836  0.5572563952  0.5107481218  0.5156372499  47.008547008  0.4152782178  0.0317978611  0.0268354050  0.6298363593  4000          0.1951498880
+
+[md] y_1_s_0: 693.587158203125, y_1_s_1: 234.20018005371094, s_0: 1429.0, s_1: 443.0
+[md] result: 0.04330319166183472
+[dp] s_0: 1429, y_1_s_0: 541.0, s_1: 443, y_1_s_1: 209.0
+[dp] result: 0.8024583055705298
+[eo] y_1_s_0: 400.0, yhat_1_y_1_s_0: 399.0, y_1_s_1: 174.0, yhat_1_y_1_s_1: 174.0
+[eo] result: 0.9975
+dual_var1     dual_var2     env0_in_acc   env0_out_acc  env1_in_acc   env1_out_acc  epoch         l_cls         l_fair        l_inv         loss          step          step_time
+0.8234501778  6.1862481327  0.9049145299  0.9337606838  0.9835951134  0.9804469274  52.884615384  0.4231370946  0.0317371759  0.0223096286  0.6378443763  4500          0.2017895823
+dual_var1     dual_var2     env0_in_md    env0_out_md   env1_in_md    env1_out_md   epoch         l_cls         l_fair        l_inv         loss          step          step_time
+0.8234501778  6.1862481327  0.0433031917  0.0408013761  0.0100708604  0.0155013800  52.884615384  0.4231370946  0.0317371759  0.0223096286  0.6378443763  4500          0.2017895823
+dual_var1     dual_var2     env0_in_dp    env0_out_dp   env1_in_dp    env1_out_dp   epoch         l_cls         l_fair        l_inv         loss          step          step_time
+0.8234501778  6.1862481327  0.8024583056  0.7986556861  0.9380173025  0.9367713156  52.884615384  0.4231370946  0.0317371759  0.0223096286  0.6378443763  4500          0.2017895823
+dual_var1     dual_var2     env0_in_eo    env0_out_eo   env1_in_eo    env1_out_eo   epoch         l_cls         l_fair        l_inv         loss          step          step_time
+0.8234501778  6.1862481327  0.9975000000  1.0000000000  1.0000000000  1.0000000000  52.884615384  0.4231370946  0.0317371759  0.0223096286  0.6378443763  4500          0.2017895823
+dual_var1     dual_var2     env0_in_auc   env0_out_auc  env1_in_auc   env1_out_auc  epoch         l_cls         l_fair        l_inv         loss          step          step_time
+0.8234501778  6.1862481327  0.5739921364  0.5609363420  0.5009039446  0.5271926236  52.884615384  0.4231370946  0.0317371759  0.0223096286  0.6378443763  4500          0.2017895823
+
+[md] y_1_s_0: 619.7481079101562, y_1_s_1: 211.0897979736328, s_0: 1429.0, s_1: 443.0
+[md] result: 0.04280710220336914
+[dp] s_0: 1429, y_1_s_0: 461.0, s_1: 443, y_1_s_1: 185.0
+[dp] result: 0.7725039244983262
+[eo] y_1_s_0: 400.0, yhat_1_y_1_s_0: 395.0, y_1_s_1: 174.0, yhat_1_y_1_s_1: 173.0
+[eo] result: 0.9932080924855492
+dual_var1     dual_var2     env0_in_acc   env0_out_acc  env1_in_acc   env1_out_acc  epoch         l_cls         l_fair        l_inv         loss          step          step_time
+0.7313329670  6.3627544804  0.9551282051  0.9743589744  0.9909249564  0.9902234637  58.760683760  0.4324757999  0.0311635378  0.0203429726  0.6455529820  5000          0.1949575176
+dual_var1     dual_var2     env0_in_md    env0_out_md   env1_in_md    env1_out_md   epoch         l_cls         l_fair        l_inv         loss          step          step_time
+0.7313329670  6.3627544804  0.0428071022  0.0393744409  0.0113019347  0.0179070830  58.760683760  0.4324757999  0.0311635378  0.0203429726  0.6455529820  5000          0.1949575176
+dual_var1     dual_var2     env0_in_dp    env0_out_dp   env1_in_dp    env1_out_dp   epoch         l_cls         l_fair        l_inv         loss          step          step_time
+0.7313329670  6.3627544804  0.7725039245  0.7414005312  0.9272132094  0.9335934778  58.760683760  0.4324757999  0.0311635378  0.0203429726  0.6455529820  5000          0.1949575176
+dual_var1     dual_var2     env0_in_eo    env0_out_eo   env1_in_eo    env1_out_eo   epoch         l_cls         l_fair        l_inv         loss          step          step_time
+0.7313329670  6.3627544804  0.9932080925  1.0000000000  0.9956180414  0.9957496588  58.760683760  0.4324757999  0.0311635378  0.0203429726  0.6455529820  5000          0.1949575176
+dual_var1     dual_var2     env0_in_auc   env0_out_auc  env1_in_auc   env1_out_auc  epoch         l_cls         l_fair        l_inv         loss          step          step_time
+0.7313329670  6.3627544804  0.5633689126  0.5588408167  0.5005238889  0.5331833521  58.760683760  0.4324757999  0.0311635378  0.0203429726  0.6455529820  5000          0.1949575176
+
+[md] y_1_s_0: 604.6034545898438, y_1_s_1: 199.18714904785156, s_0: 1429.0, s_1: 443.0
+[md] result: 0.026536881923675537
+[dp] s_0: 1429, y_1_s_0: 411.0, s_1: 443, y_1_s_1: 166.0
+[dp] result: 0.7675474466093908
+[eo] y_1_s_0: 400.0, yhat_1_y_1_s_0: 383.0, y_1_s_1: 174.0, yhat_1_y_1_s_1: 164.0
+[eo] result: 1.0158841463414634
+dual_var1     dual_var2     env0_in_acc   env0_out_acc  env1_in_acc   env1_out_acc  epoch         l_cls         l_fair        l_inv         loss          step          step_time
+0.6231478714  6.4846996193  0.9695512821  0.9807692308  0.9842931937  0.9762569832  64.636752136  0.4575846469  0.0284194139  0.0200863713  0.6543892013  5500          0.1950676441
+dual_var1     dual_var2     env0_in_md    env0_out_md   env1_in_md    env1_out_md   epoch         l_cls         l_fair        l_inv         loss          step          step_time
+0.6231478714  6.4846996193  0.0265368819  0.0269439518  0.0054481328  0.0106799006  64.636752136  0.4575846469  0.0284194139  0.0200863713  0.6543892013  5500          0.1950676441
+dual_var1     dual_var2     env0_in_dp    env0_out_dp   env1_in_dp    env1_out_dp   epoch         l_cls         l_fair        l_inv         loss          step          step_time
+0.6231478714  6.4846996193  0.7675474466  0.7473751875  0.9233620683  0.9344795203  64.636752136  0.4575846469  0.0284194139  0.0200863713  0.6543892013  5500          0.1950676441
+dual_var1     dual_var2     env0_in_eo    env0_out_eo   env1_in_eo    env1_out_eo   epoch         l_cls         l_fair        l_inv         loss          step          step_time
+0.6231478714  6.4846996193  0.9843642148  0.9839934889  0.9991921250  0.9919484702  64.636752136  0.4575846469  0.0284194139  0.0200863713  0.6543892013  5500          0.1950676441
+dual_var1     dual_var2     env0_in_auc   env0_out_auc  env1_in_auc   env1_out_auc  epoch         l_cls         l_fair        l_inv         loss          step          step_time
+0.6231478714  6.4846996193  0.5702309623  0.5760650124  0.5035648593  0.5261870675  64.636752136  0.4575846469  0.0284194139  0.0200863713  0.6543892013  5500          0.1950676441
+
+[md] y_1_s_0: 648.2752075195312, y_1_s_1: 211.50296020507812, s_0: 1429.0, s_1: 443.0
+[md] result: 0.023776769638061523
+[dp] s_0: 1429, y_1_s_0: 394.0, s_1: 443, y_1_s_1: 168.0
+[dp] result: 0.7270402212669532
+[eo] y_1_s_0: 400.0, yhat_1_y_1_s_0: 375.0, y_1_s_1: 174.0, yhat_1_y_1_s_1: 165.0
+[eo] result: 0.9886363636363636
+dual_var1     dual_var2     env0_in_acc   env0_out_acc  env1_in_acc   env1_out_acc  epoch         l_cls         l_fair        l_inv         loss          step          step_time
+0.5530031374  6.5594064312  0.9700854701  0.9807692308  0.9898778360  0.9874301676  70.512820512  0.4480702423  0.0280712094  0.0246561195  0.6457970282  6000          0.1950683064
+dual_var1     dual_var2     env0_in_md    env0_out_md   env1_in_md    env1_out_md   epoch         l_cls         l_fair        l_inv         loss          step          step_time
+0.5530031374  6.5594064312  0.0237767696  0.0225760639  0.0095421374  0.0052381456  70.512820512  0.4480702423  0.0280712094  0.0246561195  0.6457970282  6000          0.1950683064
+dual_var1     dual_var2     env0_in_dp    env0_out_dp   env1_in_dp    env1_out_dp   epoch         l_cls         l_fair        l_inv         loss          step          step_time
+0.5530031374  6.5594064312  0.7270402213  0.7430728632  0.9248781122  0.9639319279  70.512820512  0.4480702423  0.0280712094  0.0246561195  0.6457970282  6000          0.1950683064
+dual_var1     dual_var2     env0_in_eo    env0_out_eo   env1_in_eo    env1_out_eo   epoch         l_cls         l_fair        l_inv         loss          step          step_time
+0.5530031374  6.5594064312  0.9886363636  0.9628323386  0.9956333207  0.9772478070  70.512820512  0.4480702423  0.0280712094  0.0246561195  0.6457970282  6000          0.1950683064
+dual_var1     dual_var2     env0_in_auc   env0_out_auc  env1_in_auc   env1_out_auc  epoch         l_cls         l_fair        l_inv         loss          step          step_time
+0.5530031374  6.5594064312  0.5634178821  0.5577419437  0.5144730874  0.5084108805  70.512820512  0.4480702423  0.0280712094  0.0246561195  0.6457970282  6000          0.1950683064
+
+[md] y_1_s_0: 609.062255859375, y_1_s_1: 203.58364868164062, s_0: 1429.0, s_1: 443.0
+[md] result: 0.033341050148010254
+[dp] s_0: 1429, y_1_s_0: 428.0, s_1: 443, y_1_s_1: 179.0
+[dp] result: 0.741245782689774
+[eo] y_1_s_0: 400.0, yhat_1_y_1_s_0: 393.0, y_1_s_1: 174.0, yhat_1_y_1_s_1: 173.0
+[eo] result: 0.9881791907514452
+dual_var1     dual_var2     env0_in_acc   env0_out_acc  env1_in_acc   env1_out_acc  epoch         l_cls         l_fair        l_inv         loss          step          step_time
+0.5408389555  6.6164739799  0.9738247863  0.9850427350  0.9884816754  0.9874301676  76.388888888  0.4583044455  0.0271171968  0.0253770170  0.6514291592  6500          0.1950976596
+dual_var1     dual_var2     env0_in_md    env0_out_md   env1_in_md    env1_out_md   epoch         l_cls         l_fair        l_inv         loss          step          step_time
+0.5408389555  6.6164739799  0.0333410501  0.0291475058  0.0069825649  0.0148226023  76.388888888  0.4583044455  0.0271171968  0.0253770170  0.6514291592  6500          0.1950976596
+dual_var1     dual_var2     env0_in_dp    env0_out_dp   env1_in_dp    env1_out_dp   epoch         l_cls         l_fair        l_inv         loss          step          step_time
+0.5408389555  6.6164739799  0.7412457827  0.7629455039  0.9341996512  0.9216835564  76.388888888  0.4583044455  0.0271171968  0.0253770170  0.6514291592  6500          0.1950976596
+dual_var1     dual_var2     env0_in_eo    env0_out_eo   env1_in_eo    env1_out_eo   epoch         l_cls         l_fair        l_inv         loss          step          step_time
+0.5408389555  6.6164739799  0.9881791908  0.9690721649  0.9940390008  0.9739130435  76.388888888  0.4583044455  0.0271171968  0.0253770170  0.6514291592  6500          0.1950976596
+dual_var1     dual_var2     env0_in_auc   env0_out_auc  env1_in_auc   env1_out_auc  epoch         l_cls         l_fair        l_inv         loss          step          step_time
+0.5408389555  6.6164739799  0.5648853877  0.5555186425  0.5016588066  0.5243293452  76.388888888  0.4583044455  0.0271171968  0.0253770170  0.6514291592  6500          0.1950976596
+
+[md] y_1_s_0: 614.111572265625, y_1_s_1: 206.4357147216797, s_0: 1429.0, s_1: 443.0
+[md] result: 0.0362456738948822
+[dp] s_0: 1429, y_1_s_0: 404.0, s_1: 443, y_1_s_1: 171.0
+[dp] result: 0.7324141938704939
+[eo] y_1_s_0: 400.0, yhat_1_y_1_s_0: 383.0, y_1_s_1: 174.0, yhat_1_y_1_s_1: 168.0
+[eo] result: 0.9916964285714286
+dual_var1     dual_var2     env0_in_acc   env0_out_acc  env1_in_acc   env1_out_acc  epoch         l_cls         l_fair        l_inv         loss          step          step_time
+0.5930074744  6.6780212097  0.9748931624  0.9807692308  0.9846422339  0.9874301676  82.264957265  0.4444276918  0.0274061052  0.0288982207  0.6445715226  7000          0.1950967860
+dual_var1     dual_var2     env0_in_md    env0_out_md   env1_in_md    env1_out_md   epoch         l_cls         l_fair        l_inv         loss          step          step_time
+0.5930074744  6.6780212097  0.0362456739  0.0307931602  0.0071073174  0.0151110590  82.264957265  0.4444276918  0.0274061052  0.0288982207  0.6445715226  7000          0.1950967860
+dual_var1     dual_var2     env0_in_dp    env0_out_dp   env1_in_dp    env1_out_dp   epoch         l_cls         l_fair        l_inv         loss          step          step_time
+0.5930074744  6.6780212097  0.7324141939  0.7473751875  0.9289709218  0.9425196850  82.264957265  0.4444276918  0.0274061052  0.0288982207  0.6445715226  7000          0.1950967860
+dual_var1     dual_var2     env0_in_eo    env0_out_eo   env1_in_eo    env1_out_eo   epoch         l_cls         l_fair        l_inv         loss          step          step_time
+0.5930074744  6.6780212097  0.9916964286  0.9839934889  0.9951675454  0.9949826169  82.264957265  0.4444276918  0.0274061052  0.0288982207  0.6445715226  7000          0.1950967860
+dual_var1     dual_var2     env0_in_auc   env0_out_auc  env1_in_auc   env1_out_auc  epoch         l_cls         l_fair        l_inv         loss          step          step_time
+0.5930074744  6.6780212097  0.5710097355  0.5589685927  0.5014036863  0.5321096227  82.264957265  0.4444276918  0.0274061052  0.0288982207  0.6445715226  7000          0.1950967860
+
+[md] y_1_s_0: 670.9166870117188, y_1_s_1: 224.62376403808594, s_0: 1429.0, s_1: 443.0
+[md] result: 0.03755056858062744
+[dp] s_0: 1429, y_1_s_0: 579.0, s_1: 443, y_1_s_1: 221.0
+[dp] result: 0.8121902795677133
+[eo] y_1_s_0: 400.0, yhat_1_y_1_s_0: 400.0, y_1_s_1: 174.0, yhat_1_y_1_s_1: 174.0
+[eo] result: 1.0
+dual_var1     dual_var2     env0_in_acc   env0_out_acc  env1_in_acc   env1_out_acc  epoch         l_cls         l_fair        l_inv         loss          step          step_time
+0.6285849743  6.6939148788  0.8792735043  0.9123931624  0.9745200698  0.9804469274  88.141025641  0.4734736478  0.0248946230  0.0236616920  0.6549756589  7500          0.1950684123
+dual_var1     dual_var2     env0_in_md    env0_out_md   env1_in_md    env1_out_md   epoch         l_cls         l_fair        l_inv         loss          step          step_time
+0.6285849743  6.6939148788  0.0375505686  0.0333385766  0.0091456175  0.0174360871  88.141025641  0.4734736478  0.0248946230  0.0236616920  0.6549756589  7500          0.1950684123
+dual_var1     dual_var2     env0_in_dp    env0_out_dp   env1_in_dp    env1_out_dp   epoch         l_cls         l_fair        l_inv         loss          step          step_time
+0.6285849743  6.6939148788  0.8121902796  0.8159818942  0.9197622384  0.9367713156  88.141025641  0.4734736478  0.0248946230  0.0236616920  0.6549756589  7500          0.1950684123
+dual_var1     dual_var2     env0_in_eo    env0_out_eo   env1_in_eo    env1_out_eo   epoch         l_cls         l_fair        l_inv         loss          step          step_time
+0.6285849743  6.6939148788  1.0000000000  1.0000000000  0.9988452656  1.0000000000  88.141025641  0.4734736478  0.0248946230  0.0236616920  0.6549756589  7500          0.1950684123
+dual_var1     dual_var2     env0_in_auc   env0_out_auc  env1_in_auc   env1_out_auc  epoch         l_cls         l_fair        l_inv         loss          step          step_time
+0.6285849743  6.6939148788  0.5727331462  0.5646418441  0.5049134271  0.5395405120  88.141025641  0.4734736478  0.0248946230  0.0236616920  0.6549756589  7500          0.1950684123
+
+[md] y_1_s_0: 581.649658203125, y_1_s_1: 196.13223266601562, s_0: 1429.0, s_1: 443.0
+[md] result: 0.03570377826690674
+[dp] s_0: 1429, y_1_s_0: 433.0, s_1: 443, y_1_s_1: 168.0
+[dp] result: 0.7990061314938851
+[eo] y_1_s_0: 400.0, yhat_1_y_1_s_0: 387.0, y_1_s_1: 174.0, yhat_1_y_1_s_1: 165.0
+[eo] result: 1.0202727272727272
+dual_var1     dual_var2     env0_in_acc   env0_out_acc  env1_in_acc   env1_out_acc  epoch         l_cls         l_fair        l_inv         loss          step          step_time
+0.6851922700  6.7428528919  0.9620726496  0.9829059829  0.9839441536  0.9776536313  94.017094017  0.4704350207  0.0243788369  0.0242851106  0.6514536369  8000          0.1973550200
+dual_var1     dual_var2     env0_in_md    env0_out_md   env1_in_md    env1_out_md   epoch         l_cls         l_fair        l_inv         loss          step          step_time
+0.6851922700  6.7428528919  0.0357037783  0.0319084525  0.0085507035  0.0133456290  94.017094017  0.4704350207  0.0243788369  0.0242851106  0.6514536369  8000          0.1973550200
+dual_var1     dual_var2     env0_in_dp    env0_out_dp   env1_in_dp    env1_out_dp   epoch         l_cls         l_fair        l_inv         loss          step          step_time
+0.6851922700  6.7428528919  0.7990061315  0.7331340444  0.9242290749  0.9217942780  94.017094017  0.4704350207  0.0243788369  0.0242851106  0.6514536369  8000          0.1973550200
+dual_var1     dual_var2     env0_in_eo    env0_out_eo   env1_in_eo    env1_out_eo   epoch         l_cls         l_fair        l_inv         loss          step          step_time
+0.6851922700  6.7428528919  0.9801300900  0.9793814433  0.9975118742  0.9828480255  94.017094017  0.4704350207  0.0243788369  0.0242851106  0.6514536369  8000          0.1973550200
+dual_var1     dual_var2     env0_in_auc   env0_out_auc  env1_in_auc   env1_out_auc  epoch         l_cls         l_fair        l_inv         loss          step          step_time
+0.6851922700  6.7428528919  0.5631856718  0.5436354808  0.5023270537  0.5254456829  94.017094017  0.4704350207  0.0243788369  0.0242851106  0.6514536369  8000          0.1973550200
